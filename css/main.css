@@ -1,0 +1,111 @@
+ /* General page style. The scroll bar colours only visible in IE5.5+ */
+body {
+	background-color: #FFFFFF;
+	scrollbar-face-color: #FFFFFF;
+	scrollbar-highlight-color: #F0FFFF;
+	scrollbar-shadow-color: Grey;
+	scrollbar-3dlight-color: White;
+	scrollbar-arrow-color: Grey;
+	scrollbar-track-color: White;
+	scrollbar-darkshadow-color: White;
+}
+
+/* General font families for common tags */
+font,th,td,p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size : 11;
+}
+
+.error {
+	font-weight : bold;
+	color: Red;
+}
+
+.success {
+    font-weight : bold;
+    color: Green;
+}
+
+.goldText{
+    font-weight : bold;
+    color: #FFC730;
+}
+
+.title {
+	background-color: #EEEEEE;
+}
+
+.black {
+	background-color: Black;
+}
+
+.veryLight {
+	color: #EEEEEE;
+}
+
+.bigger {
+	font-size: 15;
+}
+
+.biggest {
+	font-size: 24;
+}
+
+a:link,a:active,a:visited {
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #5B91C8;
+}
+
+a:hover		{
+	text-decoration: underline;
+	font-weight : none;
+	color: Red;
+}
+
+hr	{
+	height: 1px;
+	border: 2px solid Gray;
+	border-top-width: 1px;
+}
+
+hr.blogs {
+	height: 1px;
+	border: 2px solid #EEEEEE;
+	border-top-width: 1px;
+}
+
+/* Form elements */
+input,textarea, select {
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : #FFFFFF;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button, input.submit {
+	background-color : White;
+	color : Red;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border : thin solid Black;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #FAFAFA;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #FAFAFA;
+	font-weight : normal;
+}
