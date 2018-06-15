@@ -18,9 +18,9 @@
 	$diplomaMgrEmail = 'mastercarlson@aol.com';
 	
 	if ($devMode == 0){
-		$JRFEmailAcct = 'jrfpayments@gmail.com';
+		$JRFEmailAcct = '-';
 	}else{
-		$JRFEmailAcct = 'master_1196051743_biz@aol.com';
+		$JRFEmailAcct = '-';
 	}
 
 
@@ -49,8 +49,8 @@
 	//jogma.net
 	//------------
 	$DB_server = 'localhost';
-	$DB_user = "thewo25_jogmaSQL";
-	$DB_pass = "j0gm@SQL";
+	$DB_user = "-";
+	$DB_pass = "-";
 	$DB_conn = "thewo25_jogma1";
 
 	//User Access Level Constants
