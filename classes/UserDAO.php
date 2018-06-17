@@ -61,7 +61,7 @@
 
 			mysqli_query($this->link, $query);
 
-			if(mysqli_affected_rows() == 1){
+			if(mysqli_affected_rows($this->link) == 1){
 			    return true;
 			}else{
 			    return false;
@@ -79,7 +79,7 @@
 
 			mysqli_query($this->link, $query);
 
-			if(mysqli_affected_rows() == 1){
+			if(mysqli_affected_rows($this->link) == 1){
 			    return true;
 			}else{
 			    return false;
@@ -239,7 +239,7 @@
 			
 			mysqli_query($this->link, $query);
 
-			if(mysqli_affected_rows() == 1){
+			if(mysqli_affected_rows($this->link) == 1){
 			    return true;
 			}else{
 			    return false;
