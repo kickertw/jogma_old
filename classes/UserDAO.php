@@ -8,11 +8,10 @@
 	 ***********************************************/
 
 	class UserDAO{
-	    var $link;
-	    var $query;
+	    public $link;
 	    
 	    function UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn){
-	        $link = mysqli_connect($DB_server, $DB_user, $DB_pass, $DB_conn) or DIE("unable to connect to $DB_server");
+	        $this->link = mysqli_connect($DB_server, $DB_user, $DB_pass, $DB_conn) or DIE("unable to connect to $DB_server");
 	        // mysqli_select_db($userConn, $DB_conn);
 	    }
 
@@ -24,7 +23,7 @@
 							 /*mysql_real_escape_string*/($username),
 							 /*mysql_real_escape_string*/($pass));
 	    
-			$resultSet = mysqli_query($link, $query) or die(mysqli_error() . " $query");
+			$resultSet = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
 			
 			if(mysqli_num_rows($resultSet) == 1){
 			    $row = mysqli_fetch_array($resultSet);
@@ -41,7 +40,7 @@
 			$query = sprintf($query,
 							 /*mysql_real_escape_string*/($userID));
 
-			$resultSet = mysqli_query($link, $query) or die(mysqli_error() . " $query");
+			$resultSet = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
 
 			if(mysqli_num_rows($resultSet) == 1){
 			    $row = mysqli_fetch_array($resultSet);
@@ -60,7 +59,7 @@
 			$query = sprintf($query,
 							 /*mysql_real_escape_string*/($userID));
 
-			mysqli_query($link, $query);
+			mysqli_query($this->link, $query);
 
 			if(mysqli_affected_rows() == 1){
 			    return true;
@@ -78,7 +77,7 @@
                              /*mysql_real_escape_string*/($sessionID),
 							 /*mysql_real_escape_string*/($userID));
 
-			mysqli_query($link, $query);
+			mysqli_query($this->link, $query);
 
 			if(mysqli_affected_rows() == 1){
 			    return true;
@@ -95,7 +94,7 @@
 							 /*mysql_real_escape_string*/($userID),
 							 /*mysql_real_escape_string*/($sessionID));
 
-			$resultSet = mysqli_query($link, $query);
+			$resultSet = mysqli_query($this->link, $query);
 			if(mysqli_num_rows($resultSet) == 1){
 			    return true;
 			}else{
@@ -110,7 +109,7 @@
    		    $query = sprintf($query,
 							 /*mysql_real_escape_string*/($userID));
 							 
-			$resultSet = mysqli_query($link, $query);
+			$resultSet = mysqli_query($this->link, $query);
 
 			return mysqli_fetch_array($resultSet);
    		}
@@ -122,7 +121,7 @@
    		    $query = sprintf($query,
 							 /*mysql_real_escape_string*/($excludeID));
 
-			$resultSet = mysqli_query($link, $query);
+			$resultSet = mysqli_query($this->link, $query);
 
 			return $resultSet;
    		}
@@ -143,10 +142,10 @@
 							  /*mysql_real_escape_string*/($access),
 							  /*mysql_real_escape_string*/($showAdvRanks));
 
-			mysqli_query($link, $query);
+			mysqli_query($this->link, $query);
 			
 			//Now we need to retrieve the ID of the user just inserted
-			$resultSet = mysqli_query($link, 'SELECT @@IDENTITY as userID') or die('Unable to return USER_ID after insert');
+			$resultSet = mysqli_query($this->link, 'SELECT @@IDENTITY as userID') or die('Unable to return USER_ID after insert');
 			$row = mysqli_fetch_array($resultSet);
 			return $row['userID'];			
    		}
@@ -159,7 +158,7 @@
                              /*mysql_real_escape_string*/($userID),
                              /*mysql_real_escape_string*/($name));
 
-			$resultSet = mysqli_query($link, $query);
+			$resultSet = mysqli_query($this->link, $query);
 			
             if(mysqli_num_rows($resultSet) == 1){
                 $row = mysqli_fetch_array($resultSet);
@@ -178,7 +177,7 @@
                              /*mysql_real_escape_string*/($userID),
                              /*mysql_real_escape_string*/($name));
 
-			$resultSet = mysqli_query($link, $query) or die(mysqli_error() . " $query");
+			$resultSet = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
 			
 			if(mysqli_num_rows($resultSet) > 0){
                 $query2  = 'UPDATE tbl_last_search ';
@@ -202,7 +201,7 @@
             }
             
             //save the name-value pair
-            mysqli_query($link, $query2) or die(mysqli_error() . " $query2");
+            mysqli_query($this->link, $query2) or die(mysqli_error($this->link) . " $query2");
    		}
    		
    		//Update user info
@@ -238,7 +237,7 @@
 								  /*mysql_real_escape_string*/($userID));
 			}
 			
-			mysqli_query($link, $query);
+			mysqli_query($this->link, $query);
 
 			if(mysqli_affected_rows() == 1){
 			    return true;
@@ -260,7 +259,7 @@
                              /*mysql_real_escape_string*/($schoolID),
                              /*mysql_real_escape_string*/($userID));
                              
-            $result = mysqli_query($link, $query) or die(mysqli_error() . "<br><br>Orig. Query = $query");
+            $result = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . "<br><br>Orig. Query = $query");
                               
             if($level > 0){
                 $query  = 'INSERT INTO tbl_user_school_access ';
@@ -273,7 +272,7 @@
 	                             /*mysql_real_escape_string*/($schoolID),
 	                             /*mysql_real_escape_string*/($level));
 	                             
-                mysqli_query($link, $query) or die(mysqli_error() . "<br><br>Orig. Query = $query");
+                mysqli_query($this->link, $query) or die(mysqli_error($this->link) . "<br><br>Orig. Query = $query");
             }
    		}
    		
