@@ -1,5 +1,6 @@
 <?php
 	$loginStatus = false;
+	$errMsg = '';
     /* The way this works...
      * If it is determined that a user is not logged in, we alter $action = "login"
      * Else, we let $action alone and let them proceed
