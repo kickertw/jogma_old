@@ -8,13 +8,12 @@
 	 ***********************************************/
 
 	class UserDAO{
-	    var $userConn;
+	    var $link;
 	    var $query;
 	    
-
 	    function UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn){
-	        $userConn = mysqli_connect($DB_server, $DB_user, $DB_pass) or DIE("unable to connect to $DB_server");
-	        mysqli_select_db($userConn, $DB_conn);
+	        $link = mysqli_connect($DB_server, $DB_user, $DB_pass, $DB_conn) or DIE("unable to connect to $DB_server");
+	        // mysqli_select_db($userConn, $DB_conn);
 	    }
 
 	    //Login a user and return his/her ID
@@ -25,10 +24,10 @@
 							 /*mysql_real_escape_string*/($username),
 							 /*mysql_real_escape_string*/($pass));
 	    
-			$resultSet = mysql_query($query) or die(mysql_error() . " $query");
+			$resultSet = mysqli_query($link, $query) or die(mysqli_error() . " $query");
 			
-			if(mysql_num_rows($resultSet) == 1){
-			    $row = mysql_fetch_array($resultSet);
+			if(mysqli_num_rows($resultSet) == 1){
+			    $row = mysqli_fetch_array($resultSet);
 			    return $row['id'];
 			}else{
 			    return -1;
@@ -42,10 +41,10 @@
 			$query = sprintf($query,
 							 /*mysql_real_escape_string*/($userID));
 
-			$resultSet = mysql_query($query) or die(mysql_error() . " $query");
+			$resultSet = mysqli_query($link, $query) or die(mysqli_error() . " $query");
 
-			if(mysql_num_rows($resultSet) == 1){
-			    $row = mysql_fetch_array($resultSet);
+			if(mysqli_num_rows($resultSet) == 1){
+			    $row = mysqli_fetch_array($resultSet);
 			    if($row['admin_level'] == 2){return 1;}
                 else{return 0;}
 			}else{
@@ -61,9 +60,9 @@
 			$query = sprintf($query,
 							 /*mysql_real_escape_string*/($userID));
 
-			mysql_query($query);
+			mysqli_query($link, $query);
 
-			if(mysql_affected_rows() == 1){
+			if(mysqli_affected_rows() == 1){
 			    return true;
 			}else{
 			    return false;
@@ -79,9 +78,9 @@
                              /*mysql_real_escape_string*/($sessionID),
 							 /*mysql_real_escape_string*/($userID));
 
-			mysql_query($query);
+			mysqli_query($link, $query);
 
-			if(mysql_affected_rows() == 1){
+			if(mysqli_affected_rows() == 1){
 			    return true;
 			}else{
 			    return false;
@@ -96,8 +95,8 @@
 							 /*mysql_real_escape_string*/($userID),
 							 /*mysql_real_escape_string*/($sessionID));
 
-			$resultSet = mysql_query($query);
-			if(mysql_num_rows($resultSet) == 1){
+			$resultSet = mysqli_query($link, $query);
+			if(mysqli_num_rows($resultSet) == 1){
 			    return true;
 			}else{
 			    return false;
@@ -111,9 +110,9 @@
    		    $query = sprintf($query,
 							 /*mysql_real_escape_string*/($userID));
 							 
-			$resultSet = mysql_query($query);
+			$resultSet = mysqli_query($link, $query);
 
-			return mysql_fetch_array($resultSet);
+			return mysqli_fetch_array($resultSet);
    		}
    		
    		//Gets a list of users
@@ -123,7 +122,7 @@
    		    $query = sprintf($query,
 							 /*mysql_real_escape_string*/($excludeID));
 
-			$resultSet = mysql_query($query);
+			$resultSet = mysqli_query($link, $query);
 
 			return $resultSet;
    		}
@@ -144,11 +143,11 @@
 							  /*mysql_real_escape_string*/($access),
 							  /*mysql_real_escape_string*/($showAdvRanks));
 
-			mysql_query($query);
+			mysqli_query($link, $query);
 			
 			//Now we need to retrieve the ID of the user just inserted
-			$resultSet = mysql_query('SELECT @@IDENTITY as userID') or die('Unable to return USER_ID after insert');
-			$row = mysql_fetch_array($resultSet);
+			$resultSet = mysqli_query($link, 'SELECT @@IDENTITY as userID') or die('Unable to return USER_ID after insert');
+			$row = mysqli_fetch_array($resultSet);
 			return $row['userID'];			
    		}
    		
@@ -160,10 +159,10 @@
                              /*mysql_real_escape_string*/($userID),
                              /*mysql_real_escape_string*/($name));
 
-			$resultSet = mysql_query($query);
+			$resultSet = mysqli_query($link, $query);
 			
-            if(mysql_num_rows($resultSet) == 1){
-                $row = mysql_fetch_array($resultSet);
+            if(mysqli_num_rows($resultSet) == 1){
+                $row = mysqli_fetch_array($resultSet);
                 return $row['var_value'];
             }else{
                 return '';
@@ -179,9 +178,9 @@
                              /*mysql_real_escape_string*/($userID),
                              /*mysql_real_escape_string*/($name));
 
-			$resultSet = mysql_query($query) or die(mysql_error() . " $query");
+			$resultSet = mysqli_query($link, $query) or die(mysqli_error() . " $query");
 			
-			if(mysql_num_rows($resultSet) > 0){
+			if(mysqli_num_rows($resultSet) > 0){
                 $query2  = 'UPDATE tbl_last_search ';
                 $query2 .= "SET var_value = '%s' ";
                 $query2 .= "WHERE user_id = %d AND var_name = '%s' ";
@@ -203,7 +202,7 @@
             }
             
             //save the name-value pair
-            mysql_query($query2) or die(mysql_error() . " $query2");
+            mysqli_query($link, $query2) or die(mysqli_error() . " $query2");
    		}
    		
    		//Update user info
@@ -239,9 +238,9 @@
 								  /*mysql_real_escape_string*/($userID));
 			}
 			
-			mysql_query($query);
+			mysqli_query($link, $query);
 
-			if(mysql_affected_rows() == 1){
+			if(mysqli_affected_rows() == 1){
 			    return true;
 			}else{
 			    return false;
@@ -261,7 +260,7 @@
                              /*mysql_real_escape_string*/($schoolID),
                              /*mysql_real_escape_string*/($userID));
                              
-            $result = mysql_query($query) or die(mysql_error() . "<br><br>Orig. Query = $query");
+            $result = mysqli_query($link, $query) or die(mysqli_error() . "<br><br>Orig. Query = $query");
                               
             if($level > 0){
                 $query  = 'INSERT INTO tbl_user_school_access ';
@@ -274,7 +273,7 @@
 	                             /*mysql_real_escape_string*/($schoolID),
 	                             /*mysql_real_escape_string*/($level));
 	                             
-                mysql_query($query) or die(mysql_error() . "<br><br>Orig. Query = $query");
+                mysqli_query($link, $query) or die(mysqli_error() . "<br><br>Orig. Query = $query");
             }
    		}
    		
