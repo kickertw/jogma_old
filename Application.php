@@ -49,8 +49,8 @@
 	//jogma.net
 	//------------
 	$DB_server = 'localhost';
-	$DB_user = "-";
-	$DB_pass = "-";
+	$DB_user = "thewo25_jogmaSQL";
+	$DB_pass = "j0gm@SQL";
 	$DB_conn = "thewo25_jogma1";
 
 	//User Access Level Constants
