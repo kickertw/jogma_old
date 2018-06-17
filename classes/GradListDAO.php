@@ -23,7 +23,7 @@
                       $this->DB_conn = $DB_conn;
 
                 $userConn = mysqli_connect($DB_server, $DB_user, $DB_pass);
-                mysql_select_db ($DB_conn);
+                mysqli_select_db ($DB_conn);
             }
 
             function getGradListByUser($creatorID, $getCountOnly = 0){
