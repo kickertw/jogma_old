@@ -14,8 +14,8 @@
             var $isSuperAdmin;
 
             function StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $userID = 0, $adminFlag = 0){
-                $userConn = mysql_connect($DB_server, $DB_user, $DB_pass);
-                mysql_select_db ($DB_conn);
+                $userConn = mysqli_connect($DB_server, $DB_user, $DB_pass);
+                mysqli_select_db($userConn, $DB_conn);
 
                 $this->currentUserID = $userID;
                 $this->isSuperAdmin = $adminFlag;
