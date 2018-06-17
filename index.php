@@ -2,10 +2,10 @@
     include('Application.php');
 	
 	//Setting GET Vars
-	$action = $_GET['action'];
+	$action = isset($_GET['action']) ? $_GET['action'] : '';
 	
 	//Setting POST Vars
-	$getCSVButton = $_POST['getCSVButton'];
+    $getCSVButton = isset($_POST['getCSVButton']) ? $_POST['getCSVButton'] : '';    
 	
 	//for downloading of graduation lists in CSV format	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($getCSVButton)){
