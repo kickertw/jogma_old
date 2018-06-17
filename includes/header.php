@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery-ui-1.8.18.custom.min.js"></script>
 	<script type="text/javascript" src="scripts/global.js"></script>
-	<?php if ($action == 'am'){ ?>
+	<?php if ($action == 'am') { ?>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				var schoolOptions = $('select[name="schoolID"]').html();
@@ -14,13 +14,13 @@
 				$('option[value="-1"]', 'select[name="parentSchoolID"]').remove();
 			});
 		</script>
-	<? } else if ($action == 'stu.add'){ ?>
+	<?php } else if ($action == 'stu.add') { ?>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('select[name="childSchoolID"]').val(0);
 			});
-		</script>		
-	<? } ?>	
+		</script>
+	<?php } ?>	
 </head>
 <body>
 
