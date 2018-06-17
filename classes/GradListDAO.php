@@ -22,7 +22,7 @@
                       $this->DB_pass = $DB_pass;
                       $this->DB_conn = $DB_conn;
 
-                $userConn = mysql_connect($DB_server, $DB_user, $DB_pass);
+                $userConn = mysqli_connect($DB_server, $DB_user, $DB_pass);
                 mysql_select_db ($DB_conn);
             }
 
