@@ -1,14 +1,11 @@
 <?php
     include('Application.php');
 	
-	//Setting GET Vars
+	// Setting GET Vars
 	$action = isset($_GET['action']) ? $_GET['action'] : '';
 	
-	//Setting POST Vars
-    $getCSVButton = isset($_POST['getCSVButton']) ? $_POST['getCSVButton'] : '';    
-	
-	//for downloading of graduation lists in CSV format	
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($getCSVButton)){
+	// For downloading of graduation lists in CSV format	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['getCSVButton'])) {
 		include('gradlist_csv.php');
 	}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['getBBCSVButton'])){
 	  	include('gradlist_bb_csv.php');
