@@ -5,12 +5,12 @@
      */
 
 	//retrieving POST Vars
-	$user = $_POST['user'];
-    $pwd = $_POST['pwd'];	
+	$user = isset($_POST['user']) ? $_POST['user'] : '';
+    $pwd = isset($_POST['pwd']) ? $_POST['pwd'] : '';
 	
     if($action != 'logout'){
         if(!isset($_COOKIE["sid"])){
-            if(!isset($user) || !isset($pwd)){
+            if($user == '' || $pwd == ''){
                 $errMsg = "Please login.";
                 $action = "login";
             }else{
