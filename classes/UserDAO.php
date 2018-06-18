@@ -12,7 +12,6 @@
 	    
 	    function UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn){
 	        $this->link = mysqli_connect($DB_server, $DB_user, $DB_pass, $DB_conn) or DIE("unable to connect to $DB_server");
-	        // mysqli_select_db($userConn, $DB_conn);
 	    }
 
 	    //Login a user and return his/her ID
@@ -20,8 +19,8 @@
 	        $query  = "SELECT * FROM tbl_users ";
 			$query .= "WHERE username = '%s' AND password = '%s' AND active > 0";
 			$query = sprintf($query,
-							 /*mysql_real_escape_string*/($username),
-							 /*mysql_real_escape_string*/($pass));
+							 mysqli_real_escape_string($this->link, $username),
+							 mysqli_real_escape_string($this->link, $pass));
 	    
 			$resultSet = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
 			
