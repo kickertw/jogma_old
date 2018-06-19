@@ -46,8 +46,9 @@
         return $value;
     }
     
-    function addStudentValidate($sDAO, $firstName = '', $lastName = '', $beltSize = '', $birthdate = '', $expiredate = '', $enrolldate = '', $schoolID = -1, $familyID = -1){
-
+    function addStudentValidate($sDAO, $firstName = '', $lastName = '', $beltSize = '', $birthdate = '', $expiredate = '', $enrolldate = '', $schoolID = -1, $familyID = -1) {
+		$errMsg = '';
+		
         if(strlen($firstName) <= 0){
             $errMsg = 'The student must have a first name.';
         }
