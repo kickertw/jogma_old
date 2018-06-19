@@ -53,7 +53,7 @@
     	    $enrollDate = $enr_yr . '-' . digitMasker($enr_mo) . '-' . digitMasker($enr_day);            
             $studentExists = $studentDAO->getStudents($schoolID, 0, $firstName, $lastName, 2, '', '', '', '', 0, $birthDate);
 
-            if(mysql_num_rows($studentExists) > 0){
+            if(mysqli_num_rows($studentExists) > 0){
                 $errMsg = "Student with the name [$firstName $lastName] already exists...";
             }else{
                 $studentID = $studentDAO->insertStudent($firstName, $lastName, $rankID,
@@ -146,7 +146,7 @@ function reloadFam()
             <select name="schoolID" onChange="reloadFam()">
     <?php
             if($schoolListRS != false){
-                while($row = mysql_fetch_array($schoolListRS)){
+                while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
                 	if(!isset($schoolID) || $schoolID < 1){$schoolID = $row['id'];}
                 	if(empty($row['parentSchoolID'])){
     ?>
@@ -176,7 +176,7 @@ function reloadFam()
     <?php
     		$familyListRS = $studentDAO->getFamilyList($schoolID);
             if($familyListRS != false){
-                while($row = mysql_fetch_array($familyListRS)){
+                while($row = mysqli_fetch_array($familyListRS, MYSQLI_ASSOC)){
     ?>
                 <option value="<?= $row['id'] ?>" <?php if($familyID == $row['id']){echo 'SELECTED';} ?>><?= $row['display_name'] ?></option>
     <?php
@@ -271,7 +271,7 @@ function reloadFam()
 <select id="subSchools" style="display: none">
 <?php
         if($subSchoolListRS != false){
-            while($row = mysql_fetch_array($subSchoolListRS)){
+            while($row = mysqli_fetch_array($subSchoolListRS, MYSQLI_ASSOC)){
             	if(!isset($schoolID) || $schoolID < 1){$schoolID = $row['id'];}
 ?>
             <option parentID="<?= $row['parent_id'] ?>" value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
