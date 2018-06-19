@@ -8,6 +8,7 @@
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     $isUpdated = false;
     $rankID = 0;
+    $programID = 0;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     	
