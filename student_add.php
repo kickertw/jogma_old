@@ -270,15 +270,15 @@ function reloadFam()
     </tr>
     <tr>
         <td align="right" width="20%">Address 1: </td>
-        <td align="left" width="80%"><input name="addy1" maxlength="150" type="text" value="<?= $address1 ?>"></td>
+        <td align="left" width="80%"><input name="addy1" maxlength="150" type="text" value="<?= $addy1 ?>"></td>
     </tr>
 	<tr>
         <td align="right" width="20%">Address 2: </td>
-        <td align="left" width="80%"><input name="addy2" maxlength="100"  type="text" value="<?= $address2 ?>"></td>
+        <td align="left" width="80%"><input name="addy2" maxlength="100"  type="text" value="<?= $addy2 ?>"></td>
     </tr>
 	<tr>
         <td align="right" width="20%">City, ST, Zip: </td>
-        <td align="left" width="80%"><input name="city" size="10" maxlength="100" type="text" value="<?= $city ?>">, <input name="state" size="3" maxlength="5" type="text" value="<?= $state ?>"> <input name="zip" size="5" maxlength="20" type="text" value="<?= $postal ?>"></td>
+        <td align="left" width="80%"><input name="city" size="10" maxlength="100" type="text" value="<?= $city ?>">, <input name="state" size="3" maxlength="5" type="text" value="<?= $state ?>"> <input name="zip" size="5" maxlength="20" type="text" value="<?= $zip ?>"></td>
     </tr>
 	<tr>
         <td align="right" width="20%">Country: </td>
