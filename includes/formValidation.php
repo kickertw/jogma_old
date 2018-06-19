@@ -60,14 +60,15 @@
             $errMsg = 'The student must have a valid date of birth';
         }
 
-		if(strlen(trim($expireDate)) == 0){
+		if(!isset($expireDate) || strlen(trim($expireDate)) == 0){
 			$expireDate = '01-01-1990';
 		}
+		
         if(!isset($errMsg) && datecheck($expireDate, intval(date('Y'))-1) == false){
             $errMsg = 'The student must have a valid expiration date ';
         }
 
-		if(strlen(trim($enrollDate)) == 0){
+		if(!isset($enrollDate) || strlen(trim($enrollDate)) == 0){
 			$enrollDate = '01-01-1990';
 		}        
         if(!isset($errMsg) && datecheck($enrollDate, intval(date('Y'))-1) == false){
