@@ -6,12 +6,43 @@
     $userDAO = new UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
+
+    // Initializing variables
     $isUpdated = false;
+    $familyID = 0;
+    $familyName = '';
     $rankID = 0;
     $programID = 0;
+    $dob_mo = '';
+    $dob_day = '';
+    $dob_yr = '';
+    $exp_mo = '';
+    $exp_day = '';
+    $exp_yr = '';
+    $enr_mo = '';
+    $enr_day = '';
+    $enr_yr = '';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    	
+    $firstName = '';
+    $lastName = '';
+    $beltSize = '';
+    $schoolID = 0;
+    $childSchoolID = 0;
+    $rankID = 0;
+    $phone1 = '';
+    $phone2 = '';
+    $addy1 = '';
+    $addy2 = '';
+    $city = '';
+    $state = '';
+    $zip = '';
+    $country = '';
+    $parentName = '';
+    $programID = 0;
+    $isActive = true;
+    $familyName = '';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {    	
     	//Setting POST Vars
     	$dob_mo = $_POST['dob_mo'];
     	$dob_day = $_POST['dob_day'];
