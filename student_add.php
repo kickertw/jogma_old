@@ -80,8 +80,8 @@
         
         if(strlen($errMsg) == 0){
             $birthDate = $dob_yr . '-' . digitMasker($dob_mo) . '-' . digitMasker($dob_day);            
-            $expireDate = 'NULL';
-            $enrollDate = 'NULL';
+            $expireDate = NULL;
+            $enrollDate = NULL;
 
             if ($exp_yr != '' && $exp_mo != '' && $exp_day != '') {
                 $expireDate = $exp_yr . '-' . digitMasker($exp_mo) . '-' . digitMasker($exp_day);
