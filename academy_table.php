@@ -9,7 +9,7 @@
     </tr>
     <tr><td>&nbsp;</td></tr>
 <?php
-    if(strlen($errorMsg) > 0){
+    if(isset($errorMsg) && strlen($errorMsg) > 0){
 ?>
     <tr><td align="center" colspan=2 class="error"><?= $errorMsg ?></td></tr>
     <tr><td>&nbsp;</td></tr>
@@ -26,7 +26,7 @@
             <select name="schoolID">
                 <option value="-1">&lt;Choose an academy&gt;</option>
 <?php
-            while($row = mysql_fetch_array($schoolListRS)){
+            while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
                 echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
             }
 ?>
