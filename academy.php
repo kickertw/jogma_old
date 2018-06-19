@@ -74,7 +74,21 @@
 		  	$studentDAO->removeSchool($schoolID);
 		  	$errorMsg = "Removal Successful";
 		}
-    }
+    } else {
+		$loadRow = array(
+			'location_code' => '',
+			'name' => '',
+			'address1' => '',
+			'address2' => '',
+			'city' => '',
+			'state' => '',
+			'postal' => '',
+			'country' => '',
+			'poc' => '',
+			'active' => '',
+			'credit' => '',
+		);
+	}
 
     include('academy_table.php');
 ?>

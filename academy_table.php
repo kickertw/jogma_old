@@ -24,7 +24,7 @@
         <td align="right" width="25%">Academy Load:</td>
         <td align="left" width="75%">
             <select name="schoolID">
-                <option value="-1">&lt;Choose an academy&gt;</option>
+                <option value="-1">- Choose an academy -</option>
 <?php
             while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
                 echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
