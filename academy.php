@@ -7,13 +7,7 @@
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    	//Setting POST Buttons
-    	$updateProfileButton = $_POST['updateProfileButton'];
-    	$loadSchoolButton = $_POST['loadSchoolButton'];
-    	$updateSchoolButton = $_POST['updateSchoolButton'];
-    	$removeSchoolButton = $_POST['removeSchoolButton'];
-    
-        if(isset($updateProfileButton)){
+        if(isset($_POST['updateProfileButton'])){
         	$pass1 = $_POST['pass1'];
         	$pass2 = $_POST['pass2'];
         	$username = $_POST['username'];
@@ -24,15 +18,15 @@
         
             $errorMsg = passwordCheck($pass1, $pass2);
 
-            if( strlen($errorMsg)==0 ){
+            if (strlen($errorMsg)==0) {
                 $userDAO->updateUserInfo($_COOKIE["uid"], $username, $fullname, $email, $ph1, $ph2, $pass1);
                 $errorMsg = "Your Profile has been successfully updated!";
             }
-        }elseif(isset($loadSchoolButton)){
+        } elseif(isset($_POST['loadSchoolButton'])) {
         	$schoolID = $_POST['schoolID'];
         
             $loadRow = $studentDAO->getSchool($schoolID);
-        }elseif(isset($updateSchoolButton) && strcmp($updateSchoolButton,'Update') == 0){
+        } elseif(isset($_POST['updateSchoolButton']) && strcmp($_POST['updateSchoolButton'], 'Update') == 0) {
         	$updateSchoolID = $_POST['updateSchoolID'];
         	$code = $_POST['code'];
         	$name = $_POST['name'];
@@ -49,7 +43,7 @@
 
             $studentDAO->updateSchool($updateSchoolID, $code, $name, $addy1, $city, $state, $country, $postal, $poc, $addy2, $isActive, $credit, $parentSchoolID);
             $errorMsg = "Academy [$name] has been successfully updated!";
-        }elseif(isset($updateSchoolButton) && strcmp($updateSchoolButton,'Add') == 0){
+        } elseif (isset($_POST['updateSchoolButton']) && strcmp($_POST['updateSchoolButton'], 'Add') == 0) {
         	$code = $_POST['code'];
         	$name = $_POST['name'];
         	$city = $_POST['city'];
@@ -68,7 +62,7 @@
 	            $studentDAO->insertSchool($code, $name, $addy1, $addy2, $city, $state, $country, $postal, $poc, $parentSchoolID);            
     	        $errorMsg = "Academy [$name] has been successfully added!";
     	    }
-        }elseif(isset($removeSchoolButton) && strcmp($removeSchoolButton, 'Remove') == 0){
+        } elseif (isset($_POST['removeSchoolButton']) && strcmp($_POST['removeSchoolButton'], 'Remove') == 0) {
         	$schoolID = $_POST['schoolID'];	
         
 		  	$studentDAO->removeSchool($schoolID);
