@@ -79,9 +79,18 @@
         $errMsg = addStudentValidate($studentDAO, $firstName, $lastName, $beltSize, $birthDate, $expireDate, $enrollDate, $schoolID);
         
         if(strlen($errMsg) == 0){
-            $birthDate = $dob_yr . '-' . digitMasker($dob_mo) . '-' . digitMasker($dob_day);
-	        $expireDate = $exp_yr . '-' . digitMasker($exp_mo) . '-' . digitMasker($exp_day);
-    	    $enrollDate = $enr_yr . '-' . digitMasker($enr_mo) . '-' . digitMasker($enr_day);            
+            $birthDate = $dob_yr . '-' . digitMasker($dob_mo) . '-' . digitMasker($dob_day);            
+            $expireDate = 'NULL';
+            $enrollDate = 'NULL';
+
+            if ($exp_yr != '' && $exp_mo != '' && $exp_day != '') {
+                $expireDate = $exp_yr . '-' . digitMasker($exp_mo) . '-' . digitMasker($exp_day);
+            }
+            
+            if ($enr_yr == '' && $enr_mo == '' && $enr_day == ''){
+                $enrollDate = $enr_yr . '-' . digitMasker($enr_mo) . '-' . digitMasker($enr_day);
+            }
+    	    
             $studentExists = $studentDAO->getStudents($schoolID, 0, $firstName, $lastName, 2, '', '', '', '', 0, $birthDate);
 
             if(mysqli_num_rows($studentExists) > 0){
