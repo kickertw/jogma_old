@@ -41,7 +41,7 @@
             $retVal = '<select name="' . $varName . '">' . "\n";
 
 	        if($rankListRS != false){
-    	    	while($row = mysql_fetch_array($rankListRS)){
+    	    	while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)){
 					$isSelected = '';
 					if($rankID == $row['id']){$isSelected = ' SELECTED';}
 					
@@ -74,7 +74,7 @@
         $retVal = '<select name="' . $varName . '">' . "\n";
 
         if($programListRS != false){
-	    	while($row = mysql_fetch_array($programListRS)){
+	    	while($row = mysqli_fetch_array($programListRS, MYSQLI_ASSOC)){
 				$isSelected = '';
 				if($programID == $row['id']){$isSelected = ' SELECTED';}
 				
@@ -94,14 +94,9 @@
 	//          FALSE if not
 	function validateCurrentRank($dao, $studentID, $listedRankID)
 	{
-		$resultSet = $dao->getStudent($studentID);
-        
-		$row = mysql_fetch_array($resultSet);
+		$resultSet = $dao->getStudent($studentID);        
+		$row = mysqli_fetch_array($resultSet, MYSQLI_ASSOC);
 		
-		if($listedRankID != $row['rank_id']){
-			return false;
-		}
-		
-		return true;
+		return $listedRankID == $row['rank_id'];
 	}		
 ?>

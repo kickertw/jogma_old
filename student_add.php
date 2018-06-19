@@ -6,6 +6,8 @@
     $userDAO = new UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
+    $isUpdated = false;
+    $rankID = 0;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     	
@@ -51,7 +53,6 @@
             $studentExists = $studentDAO->getStudents($schoolID, 0, $firstName, $lastName, 2, '', '', '', '', 0, $birthDate);
 
             if(mysql_num_rows($studentExists) > 0){
-                $isUpdated = false;
                 $errMsg = "Student with the name [$firstName $lastName] already exists...";
             }else{
                 $studentID = $studentDAO->insertStudent($firstName, $lastName, $rankID,
@@ -77,10 +78,9 @@
 				}
            }
         }
-    }else{
+    } elseif (isset($_REQUEST['schoolID'])) {
     	//If a new school is selected, we need to refresh to reload the proper families.
-    	//The school ID will be passed as a URL Var.	
-    
+    	//The school ID will be passed as a URL Var.	    
     	$schoolID = $_REQUEST['schoolID'];
     }
 
