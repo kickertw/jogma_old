@@ -21,7 +21,7 @@
         <th width="25%">New Rank</th>
     </tr>
 <?php
-    while($row = mysql_fetch_array($studentListRS)){
+    while($row = mysqli_fetch_assoc($studentListRS)){
         if(!isset($userIDs)){
             $userIDs = $row['id'];
         }else{

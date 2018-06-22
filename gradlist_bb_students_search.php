@@ -17,7 +17,7 @@
                 	<option value="0" >All Schools</option>
         <?php
                 if($schoolListRS != false){
-                    while($row = mysql_fetch_array($schoolListRS)){
+                    while($row = mysqli_fetch_assoc($schoolListRS)){
         ?>
 		<option value="<?= $row['id'] ?>" <?php if($schoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
         <?php
@@ -34,7 +34,7 @@
     <?php
             if($rankListRS != false){
                 $ii = 0;
-                while($row = mysql_fetch_array($rankListRS)){
+                while($row = mysqli_fetch_assoc($rankListRS)){
                   	$rankSeq[$ii] = intval($row['sequence']);
                     $rankListName[$ii] = $row['rank_name'];
                     $rankListID[$ii] = intval($row['id']);
