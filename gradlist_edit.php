@@ -111,7 +111,7 @@
     }
 
     if($gradListID > 0 || $glid > 0){
-		if(strlen($undoErrMsg)>0){
+		if(isset($undoErrMsg) && strlen($undoErrMsg)>0){
 ?>
 	<tr><td colspan="2" align="center"><span class="error"><?= $undoErrMsg ?></span></td></tr>
 <?php 	
@@ -123,7 +123,7 @@
 ?>
     </td></tr>
 <?php
-    }else{
+    } else {
 ?>
     <tr>
         <td width="5%">&nbsp;</td>
