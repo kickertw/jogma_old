@@ -478,9 +478,9 @@
             $query .= "     (first_name, last_name, rank_id, phone1, phone2, address1, address2, ";
             $query .= "                 city, state, postal_code, country, ";
             $query .= "                 belt_size, school_id, birthdate,  ";
-            $query .= "                 parent_name, program_id, enroll_date, expire_date, active, sub_school_id) ";
+            $query .= "                 parent_name, program_id, enroll_date, expire_date, active, sub_school_id, last_certification_date) ";
             $query .= "VALUES";
-            $query .= "     ('%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d,'%s','%s',%d, %d)";
+            $query .= "     ('%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d,'%s','%s',%d, %d, NULL)";
             $query = sprintf($query,
                             /*mysql_real_escape_string*/($first),
                             /*mysql_real_escape_string*/($last),
