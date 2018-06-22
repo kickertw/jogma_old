@@ -43,7 +43,7 @@
     </tr>
 <?php
 	$outOfDateRanks = false;
-    while($row = mysqli_fetch_array($studentListRS, MYSQLI_ASSOC)){
+    while($row = mysqli_fetch_array($studentListRS, MYSQLI_BOTH)){
         if(!isset($userIDs)){
             $userIDs = $row['id'];
         }else{
