@@ -131,7 +131,7 @@
                 <select name="schoolID">
         <?php
                 if($schoolListRS != false){
-                    while($row = mysql_fetch_array($schoolListRS)){
+                    while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
         ?>
                     <option value="<?= $row['id'] ?>" <?php if($schoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
         <?php
