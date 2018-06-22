@@ -4,7 +4,7 @@
 	$oldHistoryRS = $studentDAO->getStudentOldGradHistory($stid);
 	$oldHistoryPrint = '';
 	
-	while($row = mysql_fetch_array($oldHistoryRS)){
+	while($row = mysqli_fetch_array($oldHistoryRS, MYSQLI_ASSOC)){
 		    $datebits = explode('-',$row['date_rank_earned']);
 		    $gyear = intval($datebits[0]);
 	    	$gmo = intval($datebits[1]);
@@ -23,10 +23,10 @@
 	$historyRS = $studentDAO->getStudentGradHistory($stid);	
 	$historyPrint = '';
 	
-	if (mysql_num_rows($oldHistoryRS) == 0 && mysql_num_rows($historyRS) == 0 ){
+	if (mysqli_num_rows($oldHistoryRS) == 0 && mysqli_num_rows($historyRS) == 0 ){
 		$historyPrint = '<tr><td bgcolor="white"  colspan="2" align="center">No Graduation History</td></tr>' . "\n"; 
 	}else{
-	  	while($row = mysql_fetch_array($historyRS)){
+	  	while($row = mysqli_fetch_array($historyRS, MYSQLI_ASSOC)){
 		    $datebits = explode('-',$row['grad_date']);
 		    $gyear = intval($datebits[0]);
 	    	$gmo = intval($datebits[1]);
@@ -46,10 +46,10 @@
 	$bbHistoryRS = $studentDAO->getStudentBBGradHistory($stid);	
 	$bbHistoryPrint = '';
 	
-	if (mysql_num_rows($bbHistoryRS) == 0 && mysql_num_rows($bbHistoryRS) == 0 ){
+	if (mysqli_num_rows($bbHistoryRS) == 0 && mysqli_num_rows($bbHistoryRS) == 0 ){
 		$bbHistoryPrint = '<tr><td bgcolor="white"  colspan="2" align="center">No Graduation History</td></tr>' . "\n"; 
 	}else{
-	  	while($row = mysql_fetch_array($bbHistoryRS)){
+	  	while($row = mysqli_fetch_array($bbHistoryRS, MYSQLI_ASSOC)){
 		    $datebits = explode('-',$row['grad_date']);
 		    $gyear = intval($datebits[0]);
 	    	$gmo = intval($datebits[1]);

@@ -11,6 +11,13 @@
 	//Setting REQUEST Vars
     $stid = $_REQUEST['stid'];
     $familyName = '';
+    $familyID = -1;
+    $enr_yr = '';
+    $enr_mo = '';
+    $enr_day = '';
+    $exp_yr = '';
+    $exp_mo = '';
+    $exp_day = '';    
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     	
@@ -92,19 +99,13 @@
         }
         
         $datebits = explode('-',$currentStudent['enroll_date']);
-        $enr_yr = '';
-        $enr_mo = '';
-        $enr_day = '';
         if (sizeof($datebits) == 3) {
             $enr_yr = intval($datebits[0]);
             $enr_mo = intval($datebits[1]);
             $enr_day = intval($datebits[2]);
         }
 		
-        $datebits = explode('-', $currentStudent['expire_date']);
-        $exp_yr = '';
-        $exp_mo = '';
-        $exp_day = '';       
+        $datebits = explode('-', $currentStudent['expire_date']);       
         if (sizeof($datebits) == 3) {
             $exp_yr = intval($datebits[0]);
             $exp_mo = intval($datebits[1]);
