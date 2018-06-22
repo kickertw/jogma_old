@@ -480,7 +480,7 @@
             $query .= "                 belt_size, school_id, birthdate,  ";
             $query .= "                 parent_name, program_id, enroll_date, expire_date, active, sub_school_id, last_certification_date) ";
             $query .= "VALUES";
-            $query .= "     ('%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d, NULL, NULL, %d, %d, NULL)";
+            $query .= "     ('%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d, NULL, NULL, %d, %d, '1900-1-1')";
             $query = sprintf($query,
                             /*mysql_real_escape_string*/($first),
                             /*mysql_real_escape_string*/($last),
