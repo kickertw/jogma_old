@@ -84,19 +84,25 @@
         $familyID = $studentDAO->getFamilyIDByStudent($stid);
                 
         $datebits = explode('-',$currentStudent['birthdate']);
-        $dob_yr = intval($datebits[0]);
-        $dob_mo = intval($datebits[1]);
-        $dob_day = intval($datebits[2]);
+        if (sizeof($datebits) == 3) {
+            $dob_yr = intval($datebits[0]);
+            $dob_mo = intval($datebits[1]);
+            $dob_day = intval($datebits[2]);
+        }
         
         $datebits = explode('-',$currentStudent['enroll_date']);
-        $enr_yr = intval($datebits[0]);
-        $enr_mo = intval($datebits[1]);
-        $enr_day = intval($datebits[2]);
+        if (sizeof($datebits) == 3) {
+            $enr_yr = intval($datebits[0]);
+            $enr_mo = intval($datebits[1]);
+            $enr_day = intval($datebits[2]);        
+        }
 		
         $datebits = explode('-',$currentStudent['expire_date']);
-        $exp_yr = intval($datebits[0]);
-        $exp_mo = intval($datebits[1]);
-        $exp_day = intval($datebits[2]);		        
+        if (sizeof($datebits) == 3) {
+            $exp_yr = intval($datebits[0]);
+            $exp_mo = intval($datebits[1]);
+            $exp_day = intval($datebits[2]);
+        }
     }
     
     $schoolListRS = $studentDAO->getSchoolList($_COOKIE["uid"]);
