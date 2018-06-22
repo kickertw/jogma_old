@@ -16,7 +16,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchButton'])){
         if(mysqli_num_rows($studentListRS) > 0){
             while($row = mysqli_fetch_assoc($studentListRS)){
-                if($row['rank_id']+1 != count($rankList)){
+                //if($row['rank_id'] + 1 != count($rankList)){
 ?>
         <tr bgcolor="white">
             <td width="5%" align="center"><input name="studentIDs[]" type="checkbox" value="<?= $row['id'] ?>"></td>
@@ -32,7 +32,7 @@
 <?php
                         }
                     }
-                }
+                //}
 ?>
                 </select>
             </td>
