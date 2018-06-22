@@ -5,14 +5,18 @@
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
     
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
-    
+
+    $schoolID = 0;	
+    $rankID = 0;
+    $firstName = '';    	
+    $lastName = '';
+    $isActive = '';
+    $orderBy = '';
+    $orderDir = '';
+    $orderBy2 = '';
+    $orderDir2 = '';
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    	//Setting POST Vars
-    	$searchButton = $_POST['searchButton'];
-    	$returnToSearch = $_POST['returnToSearch'];
-    	$setToActive = $_POST['setToActive'];
-    	$setToInactive = $_POST['setToInactive'];
-    	
     	$schoolID = $_POST['schoolID'];	
     	$rankID = $_POST['rankID'];
     	$firstName = $_POST['firstName'];    	
@@ -21,10 +25,9 @@
     	$orderBy = $_POST['orderBy'];
     	$orderDir = $_POST['orderDir'];
     	$orderBy2 = $_POST['orderBy2'];
-    	$orderDir2 = $_POST['orderDir2'];
-		    	    	
+    	$orderDir2 = $_POST['orderDir2'];		    	    	
     
-    	if (isset($searchButton)){
+    	if (isset($_POST['searchButton'])){
 	        $studentListRS = $studentDAO->getStudents($schoolID, $rankID, $firstName, $lastName, $isActive, $orderBy, $orderDir, $orderBy2, $orderDir2);
 	        
 	        $userDAO->saveSearchVar($_COOKIE["uid"], 'firstName', $firstName);
@@ -36,7 +39,7 @@
 	        $userDAO->saveSearchVar($_COOKIE["uid"], 'orderDir', $orderDir);
 	        $userDAO->saveSearchVar($_COOKIE["uid"], 'orderBy2', $orderBy2);
 	        $userDAO->saveSearchVar($_COOKIE["uid"], 'orderDir2', $orderDir2);
-	    }elseif (isset($returnToSearch)){
+	    }elseif (isset($_POST['returnToSearch'])){
 	        $firstName = $userDAO->getSearchVar($_COOKIE["uid"], 'firstName');
 	        $lastName = $userDAO->getSearchVar($_COOKIE["uid"], 'lastName');
 	        $schoolID = $userDAO->getSearchVar($_COOKIE["uid"], 'schoolID');
@@ -48,7 +51,7 @@
 	        $orderDir2 = $userDAO->getSearchVar($_COOKIE["uid"], 'orderDir2');
 	        
 	        $studentListRS = $studentDAO->getStudents($schoolID, $rankID, $firstName, $lastName, $isActive, $orderBy, $orderDir, $orderBy2, $orderDir2);
-	    }elseif (isset($setToActive) || isset($setToInactive)){
+	    }elseif (isset($_POST['setToActive']) || isset($_POST['setToInactive'])){
 	      	$idString = '0';
 	      	$studentIDs = $_POST['studentIDs'];
 	      	
@@ -56,7 +59,7 @@
             	$idString .= ',' . $studentIDs[$i];
           	}
         
-        	if(isset($setToActive)){
+        	if(isset($_POST['setToActive'])){
 				$currentStatus = 1;
 			}else{
 			  	$currentStatus = 0;
