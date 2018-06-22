@@ -111,7 +111,7 @@
 
             if(mysqli_num_rows($resultSet) > 0){
                 while($row = mysqli_fetch_array($resultSet, MYSQLI_ASSOC)){
-                    if(strlen($studentIDs) == 0){
+                    if(strlen($studentIDs ?? '') == 0){
                         $studentIDs = $row['student_id'];
                     }else{
                         $studentIDs .= ', ' . $row['student_id'];
