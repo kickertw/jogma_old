@@ -116,7 +116,7 @@
 ?>
 
 <?php
-    if($isUpdated == true && strlen($errMsg) == 0){
+    if (isset($isUpdated) && $isUpdated == true && strlen($errMsg) == 0) {
 ?>
 <form name="return2Search" action="index.php?action=stu.search" method="POST">
     <table align="left" bgcolor="White" width="100%">
@@ -130,7 +130,7 @@
     </table>
 </form>
 <?php
-    }elseif(isset($isUpdated) && $isUpdated == false){
+    } elseif(isset($isUpdated) && $isUpdated == false) {
 ?>
 <form name="return2Search" action="index.php?action=stu.search" method="POST">
     <table align="left" bgcolor="White" width="100%">
