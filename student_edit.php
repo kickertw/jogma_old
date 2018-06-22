@@ -274,14 +274,14 @@
 			<?= $programHTML ?>            
         </td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td align="right" width="20%">Start Date: </td>
         <td align="left" width="80%"><input name="enr_mo" type="text" value="<?= $enr_mo ?>" size="2" maxlength="2"> - <input name="enr_day" type="text" value="<?= $enr_day ?>" size="2" maxlength="2"> - <input name="enr_yr" type="text" value="<?= $enr_yr ?>" size="4" maxlength="4"></td>
     </tr>
     <tr>
         <td align="right" width="20%">Exp. Date: </td>
         <td align="left" width="80%"><input name="exp_mo" type="text" value="<?= $exp_mo ?>" size="2" maxlength="2"> - <input name="exp_day" type="text" value="<?= $exp_day ?>" size="2" maxlength="2"> - <input name="exp_yr" type="text" value="<?= $exp_yr ?>" size="4" maxlength="4"></td>
-    </tr>     
+    </tr>      -->
     <tr>
         <td align="right" width="15%">Status: </td>
         <td align="left" width="85%">

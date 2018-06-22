@@ -405,13 +405,13 @@
                     $updateFields .= ", parent_name = '" . trim($parentName) . "' ";
                 }
 
-                if (strlen(trim($enrollDate)) > 0){
-                    $updateFields .= ", enroll_date = '" . trim($enrollDate) . "' ";
-                }
+                // if (strlen(trim($enrollDate)) > 0){
+                //     $updateFields .= ", enroll_date = '" . trim($enrollDate) . "' ";
+                // }
 
-                if (strlen(trim($expireDate)) > 0){
-                    $updateFields .= ", expire_date = '" . trim($expireDate) . "' ";
-                }
+                // if (strlen(trim($expireDate)) > 0){
+                //     $updateFields .= ", expire_date = '" . trim($expireDate) . "' ";
+                // }
 
                 $query .= $updateFields;
                 $query .= "WHERE id = $id";
