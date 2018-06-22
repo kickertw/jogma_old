@@ -15,7 +15,7 @@
             $birthDate = $dob_yr . '-' . digitMasker($dob_mo) . '-' . digitMasker($dob_day);
             $studentExists = $studentDAO->getStudents($schoolID, 0, $firstName, $lastName, 2, '', '', '', '', 0, $birthDate);
 
-            if(mysql_num_rows($studentExists) > 0){
+            if(mysqli_num_rows($studentExists) > 0){
                 $isUpdated = false;
                 $errMsg = "Student with the name [$firstName $lastName] already exists...";
             }else{
@@ -61,7 +61,7 @@
             <select name="schoolID">
     <?php
             if($schoolListRS != false){
-                while($row = mysql_fetch_array($schoolListRS)){
+                while($row = mysqli_fetch_assoc($schoolListRS)){
     ?>
                 <option value="<?= $row['id'] ?>" <?php if($schoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
     <?php
@@ -77,7 +77,7 @@
             <select name="rankID">
     <?php
             if($rankListRS != false){
-                while($row = mysql_fetch_array($rankListRS)){
+                while($row = mysqli_fetch_assoc($rankListRS)){
     ?>
                 <option value="<?= $row['id'] ?>" <?php if($rankID == $row['id']){echo 'SELECTED';} ?>><?= $row['rank_name'] ?></option>
     <?php

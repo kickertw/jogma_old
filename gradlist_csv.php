@@ -16,14 +16,14 @@
 	if (isset($gradListID) && isset($file_prefix) && strpos($referer, $domainName) !== false){	  
 	  	//retrieval of ranks
 	  	$rankRS = $studentDAO->getRankList();	  	
-	  	while($rankRow = mysql_fetch_array($rankRS)){
+	  	while($rankRow = mysqli_fetch_assoc($rankRS)){
 			$rankList[intval($rankRow['sequence'])] = $rankRow['print_name'];    
 		}	  	
 	  	
 	  	//retrieval of students per grad list
 		$studentRS = $gradListDAO->getGradStudents($gradListID, 0, 1);  
 				
-		while($row = mysql_fetch_array($studentRS)){
+		while($row = mysqli_fetch_assoc($studentRS)){
 			$oldSeq = intval($row['old_sequence']);
 			$newSeq = intval($row['new_sequence']);
 			

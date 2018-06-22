@@ -3,7 +3,7 @@
 ?>
 
 <table align="center" width="85%" bgcolor="FF0000">
-<tr><td align="center"><div class="veryLight"><b><?= mysql_num_rows($studentListRS) ?> student(s) have been found.</b></div></td></tr>
+<tr><td align="center"><div class="veryLight"><b><?= mysqli_num_rows($studentListRS) ?> student(s) have been found.</b></div></td></tr>
 <tr><td>
     <table align="center" cellspacing="1" width="100%">
     <tr bgcolor="C0C0C0">
@@ -14,8 +14,8 @@
     </tr>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchButton'])){
-        if(mysql_num_rows($studentListRS) > 0){
-            while($row = mysql_fetch_array($studentListRS)){
+        if(mysqli_num_rows($studentListRS) > 0){
+            while($row = mysqli_fetch_assoc($studentListRS)){
                 if($row['rank_id']+1 != count($rankList)){
 ?>
         <tr bgcolor="white">

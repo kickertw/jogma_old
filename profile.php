@@ -69,7 +69,7 @@
                 $userDAO->updateUserInfo($updateUserID, $e_username, $e_fullname, $e_email, $e_ph1, $e_ph2, $e_pass1, $e_status, $e_accesslvl, $e_rank_display);
                 $schoolListRS = $studentDAO->getSchoolList(0,1);
                 
-                while($row = mysql_fetch_array($schoolListRS)){
+                while($row = mysqli_fetch_assoc($schoolListRS)){
                 	${sch_axs_.$row['id']} = $_POST['sch_axs_' . $row['id']];
                     $userDAO->updateSchoolAccess($updateUserID, $row['id'], ${sch_axs_.$row['id']});
                 }
@@ -94,7 +94,7 @@
                 $newUserID = $userDAO->addUser($e_username, $e_fullname, $e_email, $e_ph1, $e_ph2, $e_pass1, $e_status, $e_accesslvl, $e_rank_display);
                 $schoolListRS = $studentDAO->getSchoolList(0,1);
 
-                while($row = mysql_fetch_array($schoolListRS)){
+                while($row = mysqli_fetch_assoc($schoolListRS)){
                 	${sch_axs_.$row['id']} = $_POST['sch_axs_' . $row['id']];                
                     $userDAO->updateSchoolAccess($newUserID, $row['id'], ${sch_axs_.$row['id']});
                 }

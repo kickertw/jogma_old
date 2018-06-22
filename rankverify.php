@@ -33,7 +33,7 @@
 		$studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, 1, 1);
 		$studentRS = $studentDAO->getStudents(-1, -1, $fName, $lName, -1, '', '', '', '', '', $dob);
 		
-		$row = mysql_fetch_array($studentRS);
+		$row = mysqli_fetch_assoc($studentRS);
 		
 		$stid = $row[id];
 		

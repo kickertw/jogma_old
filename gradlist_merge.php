@@ -81,7 +81,7 @@
             $gradStudentRS = $gradListDAO->getGradStudents($gradListID);
             $setReadOnly = true;
 
-            while($setReadOnly && $row = mysql_fetch_array($gradStudentRS)){
+            while($setReadOnly && $row = mysqli_fetch_assoc($gradStudentRS)){
                 //Unable to Run updateStudentRankByGraduation(...) because of mySQL version...
                 //we may be able to use this the mySQL version is updated...
                 //
@@ -115,7 +115,7 @@
         if($rankListRS != false){
                 $showRank = true;
                 $ii = 0;
-            while($row = mysql_fetch_array($rankListRS)){
+            while($row = mysqli_fetch_assoc($rankListRS)){
 
                     if($showRank){
                         $rankListName[$ii] = $row['rank_name'];
@@ -262,12 +262,12 @@
         <td width="5%">&nbsp;</td>
         <td align="left">
 <?php
-        if(mysql_num_rows($gradListRS) > 0){
+        if(mysqli_num_rows($gradListRS) > 0){
             $currentSchool = '';
             $firstSchool = true;
 ?>
 <?php
-            while($glRow = mysql_fetch_array($gradListRS)){
+            while($glRow = mysqli_fetch_assoc($gradListRS)){
                 if($currentSchool != $glRow['school_id']){
                     $currentSchool = $glRow['school_id'];
                     if(!$firstSchool){echo '            </ul>';}

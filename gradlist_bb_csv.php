@@ -12,14 +12,14 @@
 	if (isset($_POST['gradListID']) && isset($_POST['file_prefix']) && strpos($referer, $domainName) !== false){	  
 	  	//retrieval of ranks
 	  	$rankRS = $studentDAO->getBBCandidateRankList();	  	
-	  	while($rankRow = mysql_fetch_array($rankRS)){
+	  	while($rankRow = mysqli_fetch_array($rankRS, MYSQLI_ASSOC)){
 			$rankList[intval($rankRow['sequence'])] = $rankRow['print_name'];    
 		}	  	
 	  	
 	  	//retrieval of students per grad list
 		$studentRS = $gradListDAO->getBBGradStudents($_POST['gradListID'], 0, 1);  
 				
-		while($row = mysql_fetch_array($studentRS)){
+		while($row = mysqlI_fetch_array($studentRS, MYSQLI_ASSOC)){
 			$oldSeq = intval($row['old_sequence']);
 			$newSeq = intval($row['new_sequence']);
 			

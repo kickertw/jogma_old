@@ -13,8 +13,8 @@
     </tr>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchButton'])){
-        if(mysql_num_rows($studentListRS) > 0){
-            while($row = mysql_fetch_array($studentListRS)){
+        if(mysqli_num_rows($studentListRS) > 0){
+            while($row = mysqli_fetch_assoc($studentListRS)){
 ?>
         <tr bgcolor="white">
             <td width="5%" align="center"><input name="studentIDs[]" type="checkbox" value="<?= $row['id'] ?>"></td>

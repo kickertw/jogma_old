@@ -8,13 +8,10 @@
 	 ***********************************************/
 
 	class AuditDAO{
-	    var $userConn;
-	    var $query;
-	    
+	    public $link;
 
 	    function AuditDAO($DB_server, $DB_user, $DB_pass, $DB_conn){
-	        $userConn = mysqli_connect($DB_server, $DB_user, $DB_pass) or DIE("unable to connect to $DB_server");
-	        mysqli_select_db($userConn, $DB_conn);
+			$this->link = mysqli_connect($DB_server, $DB_user, $DB_pass, $DB_conn) or DIE("unable to connect to $DB_server");
 	    }
    		
    		//Insert a audit entry
@@ -25,10 +22,10 @@
             $query .= "     ('%d','%s')";
             
    		    $query  = sprintf($query,
-                              mysql_real_escape_string($userID),
-                              mysql_real_escape_string($auditText));
+			   				  mysqli_real_escape_string($this->link, $userID),
+							  mysqli_real_escape_string($this->link, $auditText));
 
-			mysql_query($query);
+			mysqli_query($this->link, $query);
    		}
    		
    		function getLog($logID = 0, $userID = 0, $startRow = 0, $limit = 0){
@@ -47,11 +44,11 @@
             $query .= ' LIMIT %d, %d';
             
             $query = sprintf($query,
-                             mysql_real_escape_string($queryID),
-                             mysql_real_escape_string($startRow),
-                             mysql_real_escape_string($limit));
+							 mysqli_real_escape_string($this->link, $queryID),
+                             mysqli_real_escape_string($this->link, $startRow),
+                             mysqli_real_escape_string($this->link, $limit));
 
-			return mysql_query($query);	
+			return mysqli_query($this->link, $query);	
         }
    	}
 ?>

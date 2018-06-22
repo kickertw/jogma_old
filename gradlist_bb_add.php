@@ -110,7 +110,7 @@
                 	<option value="-1">Choose a date</option>
 <?php
 		$gradRS = $gradListDAO->getAllBBGradLists();
-		while($row = mysql_fetch_array($gradRS)){
+		while($row = mysqlI_fetch_array($gradRS, MYSQLI_ASSOC)){
 ?>                
                     <option value="<?= $row['id'] ?>"><?= date('F j, Y',strtotime($row['grad_date'])) ?></option>
 <?php

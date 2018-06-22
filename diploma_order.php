@@ -48,7 +48,7 @@
 	        <td align="left" width="75%">
 	            <select name="schoolID">
 <?php
-	            while($row = mysql_fetch_array($schoolListRS)){
+	            while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
 	                echo '<option value="' . $row['id'] . '">' . $row['location_code'] . ' - ' . $row['name'] . '</option>';
 	            }
 ?>
@@ -65,21 +65,7 @@
 <?php
 	}else{
 	  	if (isset($gotoStep2)){
-	    	$schoolInfo = $studentDAO->getSchool($schoolID);				   
-			
-			//Getting the active student count to determine how many diploma's one can order
-/*			$activeCountRS = $studentDAO->getStudents($schoolID, 0, '', '', 1);
-			$activeStudentCount = mysql_num_rows($activeCountRS);
-			$qtyToOrder = round($activeStudentCount * .8, -2) - $schoolInfo['diploma_count'];
-
-			if ($activeStudentCount > 100){
-				for($ii = 100; $ii < $qtyToOrder; $ii+=100){
-					$qtoString .= "					<option value=\"$ii\">$ii</option>\n";
-				}
-			}elseif($activeStudentCount <= 100 && $schoolInfo['diploma_count'] <= $qtyToOrder){
-				$qtoString .= "					<option value=\"100\">100</option>\n";
-			}
-*/
+	    	$schoolInfo = $studentDAO->getSchool($schoolID);
 ?>
 		<tr>
 			<td colspan="2"><u><b>Choose your order quantity</b></u><br><br></td>
@@ -92,9 +78,6 @@
 	        <td align="right" width="25%">Quantity Remaining:</td>
 	        <td align="left" width="75%"><?= $schoolInfo['diploma_count'] ?></td>
 	    </tr>
-<?php
-//			if(strlen($qtoString) > 0){
-?>		  	    
 	    <tr>
 			<td align="right" width="25%">Quantity To Order:</td>
 			<td align="left" width="75%">

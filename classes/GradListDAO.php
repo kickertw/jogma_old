@@ -522,7 +522,7 @@
                 $query  = "DELETE FROM tbl_gradlist ";
                 $query .= "WHERE id = %d";
                 $query  = sprintf($query,
-                                  mysql_real_escape_string($gradListID));
+                                  mysqli_real_escape_string($tihs->link, $gradListID));
 
                 mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
             }

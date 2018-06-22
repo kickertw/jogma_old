@@ -78,7 +78,7 @@
         if($familyID > 0){
 			$familyRS = $sDAO->getFamily($familyID);
 		
-			$row = mysql_fetch_array($familyRS);
+			$row = mysqli_fetch_assoc($familyRS);
 			if ($row['school_id'] != $schoolID){
 			  	$errMsg = 'Since the school has changed, please reset the family group value.';
 			}	  

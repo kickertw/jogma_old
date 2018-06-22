@@ -30,7 +30,7 @@
             <select name="e_userID">
                 <option value="-1">&lt;Choose A User&gt;</option>
 <?php
-            while($row = mysql_fetch_array($userListRS)){
+            while($row = mysqli_fetch_assoc($userListRS)){
                 echo '<option value="' . $row['id'] . '">' . $row['username'] . '</option>';
             }
 ?>
@@ -113,7 +113,7 @@
 	</tr>    
     <tr><td align="right"><br><u>User Access Rights</u><br></td></tr>
 <?php
-    while($row2 = mysql_fetch_array($schoolListRS)){
+    while($row2 = mysqli_fetch_assoc($schoolListRS)){
         $accessValue = $studentDAO->getSchoolAccess($e_userID, $row2['id']);
 ?>
     <tr>
