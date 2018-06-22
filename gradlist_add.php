@@ -15,27 +15,24 @@
     
     //Returning a list of schools this user has access to
     $schoolListRS = $studentDAO->getSchoolList($_COOKIE["uid"]);
+
+    // Set post vars if applicable
+    $firstName = $_POST['firstName'] ?? '';
+    $lastName = $_POST['lastName'] ?? '';
+    $rankID = $_POST['rankID'] ?? 0;
+    $orderBy = $_POST['orderBy'] ?? '';
+    $orderDir = $_POST['orderDir'] ?? '';
+    $orderBy2 = $_POST['orderBy2'] ?? '';
+    $orderDir2 = $_POST['orderDir2'] ?? '';
+    $gradMo = $_POST['gradMo'] ?? '';
+    $gradDay = $_POST['gradDay'] ?? '';
+    $gradYear = $_POST['gradYear'] ?? '';
+    $schoolID = $_POST['schoolID'] ?? 0;
+    $gradListID = $_POST['gradListID'] ?? '';
+    $studentIDs = $_POST['studentIDs'] ?? '';
+    $step = $_POST['step'] ?? 1;
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){	
-    	if(isset($_POST['step'])){
-    		$step = $_POST['step'];
-    	}
-    		
-    	//Setting POST Vars
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $rankID = $_POST['rankID'];
-        $orderBy = $_POST['orderBy'];
-        $orderDir = $_POST['orderDir'];
-        $orderBy2 = $_POST['orderBy2'];
-        $orderDir2 = $_POST['orderDir2'];
-    	$gradMo = $_POST['gradMo'];
-    	$gradDay = $_POST['gradDay'];
-    	$gradYear = $_POST['gradYear'];
-    	$schoolID = $_POST['schoolID'];
-    	$gradListID = $_POST['gradListID'];
-        $studentIDs = $_POST['studentIDs'];
- 		   
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') { 		   
         if ($step == 2){
             $gradDate = $gradMo . '-' . digitMasker($gradDay) . '-' . $gradYear;
             
@@ -133,7 +130,7 @@
                 if($schoolListRS != false){
                     while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
         ?>
-                    <option value="<?= $row['id'] ?>" <?php if($schoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
+                    <option value="<?= $row['id'] ?>" <?php if($schoolID ?? 0 == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
         <?php
                     }
                 }

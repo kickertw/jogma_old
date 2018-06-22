@@ -20,7 +20,7 @@
                 $ii = 0;
                 $showRank = true;
                 
-                while($row = mysql_fetch_array($rankListRS)){
+                while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)){
                 	
                 	if($showRank){
                 		$rankListName[$ii] = $row['rank_name'];
