@@ -2,8 +2,7 @@
     include($classpath . 'StudentDAO.php');
 
     $userDAO = new UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
-    $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
-    
+    $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);    
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
 
     $schoolID = 0;	
@@ -98,7 +97,7 @@
             <select name="schoolID">
 <?php
     if($schoolListRS != false){
-        while($row = mysql_fetch_array($schoolListRS)){
+        while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
 ?>
                 <option value="<?= $row['id'] ?>" <?php if($schoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
 <?php
@@ -115,7 +114,7 @@
                 <option value="0">All Ranks</option>
     <?php
             if($rankListRS != false){
-                while($row = mysql_fetch_array($rankListRS)){
+                while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)){
     ?>
                 <option value="<?= $row['id'] ?>" <?php if($rankID == $row['id']){echo 'SELECTED';} ?>><?= $row['rank_name'] ?></option>
     <?php
