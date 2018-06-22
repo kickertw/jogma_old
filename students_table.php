@@ -1,7 +1,7 @@
 <?php
     //This file is too be included by students.php
 ?>
-<b><?= mysql_num_rows($studentListRS) ?> record(s)</b> have been found<br><br>
+<b><?= mysqli_num_rows($studentListRS) ?> record(s)</b> have been found<br><br>
 <table align="center" width="95%" bgcolor="FF0000">
 <tr><td>
     <table align="center" cellspacing="1" width="100%">
@@ -14,8 +14,8 @@
         <th width="10%">Status</th>
     </tr>
 <?php
-    if(mysql_num_rows($studentListRS) > 0){
-        while($row = mysql_fetch_array($studentListRS)){
+    if(mysqli_num_rows($studentListRS) > 0){
+        while($row = mysqli_fetch_array($studentListRS, MYSQLI_ASSOC)){
             if($row['active'] == 1){
                 $activeStatus = "Active";
             }else{
