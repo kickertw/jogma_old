@@ -81,10 +81,8 @@
             <td width="35%" align="center">
 <?php
 		if($gradListDAO->isGradListPaid($gradListID)){
-			for($idx = 0; $idx <= count($rankListID); $idx++) {
-				if($row['new_rank_id'] == $rankListID[$idx]) {
-                    echo '<b>' . $rankListName[$idx] . '</b>';
-                }
+			for($idx = 0; $idx < count($rankListID); $idx++) {
+				if($row['new_rank_id'] == $rankListID[$idx]) {echo '<b>' . $rankListName[$idx] . '</b>';}			  
 			}
 		}else{
 ?>				            
