@@ -16,15 +16,16 @@
     $orderDir2 = '';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    	$schoolID = $_POST['schoolID'];	
-    	$rankID = $_POST['rankID'];
-    	$firstName = $_POST['firstName'];    	
-    	$lastName = $_POST['lastName'];
-    	$isActive = $_POST['isActive'];
-    	$orderBy = $_POST['orderBy'];
-    	$orderDir = $_POST['orderDir'];
-    	$orderBy2 = $_POST['orderBy2'];
-    	$orderDir2 = $_POST['orderDir2'];		    	    	
+
+    	$schoolID = $_POST['schoolID'] ?? 0;	
+    	$rankID = $_POST['rankID'] ?? 0;
+    	$firstName = $_POST['firstName'] ?? '';    	
+    	$lastName = $_POST['lastName'] ?? '';
+    	$isActive = $_POST['isActive'] ?? '';
+    	$orderBy = $_POST['orderBy'] ?? '';
+    	$orderDir = $_POST['orderDir'] ?? '';
+    	$orderBy2 = $_POST['orderBy2'] ?? '';
+    	$orderDir2 = $_POST['orderDir2'] ?? '';		    	    	
     
     	if (isset($_POST['searchButton'])){
 	        $studentListRS = $studentDAO->getStudents($schoolID, $rankID, $firstName, $lastName, $isActive, $orderBy, $orderDir, $orderBy2, $orderDir2);
