@@ -480,7 +480,7 @@
             $query .= "                 belt_size, school_id, birthdate,  ";
             $query .= "                 parent_name, program_id, enroll_date, expire_date, active, sub_school_id, last_certification_date) ";
             $query .= "VALUES";
-            $query .= "     ('%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d,'%s','%s',%d, %d, NULL)";
+            $query .= "     ('%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d, NULL, NULL, %d, %d, NULL)";
             $query = sprintf($query,
                             /*mysql_real_escape_string*/($first),
                             /*mysql_real_escape_string*/($last),
@@ -498,8 +498,8 @@
                             /*mysql_real_escape_string*/($birthDate),
                             /*mysql_real_escape_string*/($parentName),
                             /*mysql_real_escape_string*/($programID),
-                            /*mysql_real_escape_string*/($enrollDate),
-                            /*mysql_real_escape_string*/($expireDate),
+                            /*mysql_real_escape_string($enrollDate),*/
+                            /*mysql_real_escape_string($expireDate),*/
                             /*mysql_real_escape_string*/($active),
                             /*mysql_real_escape_string*/($childSchoolID));
                     

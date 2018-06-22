@@ -87,7 +87,7 @@
                 $expireDate = $exp_yr . '-' . digitMasker($exp_mo) . '-' . digitMasker($exp_day);
             }
             
-            if ($enr_yr == '' && $enr_mo == '' && $enr_day == ''){
+            if ($enr_yr != '' && $enr_mo != '' && $enr_day != ''){
                 $enrollDate = $enr_yr . '-' . digitMasker($enr_mo) . '-' . digitMasker($enr_day);
             }
     	    
@@ -239,14 +239,14 @@ function reloadFam()
 			<?= $programHTML ?>            
         </td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td align="right" width="20%">Start Date: </td>
         <td align="left" width="80%"><input name="enr_mo" type="text" value="<?= $enr_mo ?>" size="2" maxlength="2"> - <input name="enr_day" type="text" value="<?= $enr_day ?>" size="2" maxlength="2"> - <input name="enr_yr" type="text" value="<?= $enr_yr ?>" size="4" maxlength="4"></td>
     </tr>
     <tr>
         <td align="right" width="20%">Exp. Date: </td>
         <td align="left" width="80%"><input name="exp_mo" type="text" value="<?= $exp_mo ?>" size="2" maxlength="2"> - <input name="exp_day" type="text" value="<?= $exp_day ?>" size="2" maxlength="2"> - <input name="exp_yr" type="text" value="<?= $exp_yr ?>" size="4" maxlength="4"></td>
-    </tr>    
+    </tr> -->
     <tr>
         <td align="right" width="20%">Status: </td>
         <td align="left" width="80%">
