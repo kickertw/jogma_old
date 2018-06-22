@@ -54,12 +54,7 @@
                                   /*mysql_real_escape_string*/($userID));
 	
 	            $resultSet = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
-	
-	            if ($getCountOnly == 0){
-	                return $resultSet;
-	            }else{
-	                return mysqli_num_rows($resultSet);
-	            }
+                return $resultSet;
             }
 
             function getGradListName($gradListID){

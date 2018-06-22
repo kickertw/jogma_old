@@ -26,21 +26,19 @@
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     
     //SETTING POST VARS
-    $updateListButton = $_POST['updateListButton'];
-    $removeStudentsButton = $_POST['removeStudentsButton'];
-    $userIDs = $_POST['userIDs'];
-    $gradListID = $_POST['gradListID'];
-    
-    
+    $userIDs = $_POST['userIDs'] ?? 0;
+    $gradListID = $_POST['gradListID'] ?? 0;    
+    $rankUpdateStatus = '';
+
     //SETTTING REQUEST VARS
-    $gsid = $_REQUEST['gsid'];
-    if (isset($gradListID)){
+    $gsid = $_REQUEST['gsid'] ?? 0;
+    if (isset($_POST['gradListID'])){
     	$glid = $gradListID;
     }else{
     	$glid = $_REQUEST['glid'];
     }
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($updateListButton)){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateListButton'])){
     	
         $idList = explode(',',$userIDs);
 
@@ -57,7 +55,7 @@
     //if($gsid > 0 && $act2 == 'rm'){
     	//remove a student from a gradlist
     //    $gradListDAO->removeGrad($gsid);
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($removeStudentsButton)){
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['removeStudentsButton'])){
     	//remove student(s) from a gradlist
     	foreach($_POST['gsid'] as $value) { 
 			$gradListDAO->removeGrad($value); 
