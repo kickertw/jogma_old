@@ -60,7 +60,7 @@
         }
     }else{
         $studentRS = $studentDAO->getStudent($stid);
-        $currentStudent = mysql_fetch_array($studentRS);
+        $currentStudent = mysqli_fetch_array($studentRS, MYSQLI_ASSOC);
         
         //setting local vars so input fields can be pre-populated
         $firstName = $currentStudent['first_name'];
@@ -201,7 +201,7 @@
             <select name="schoolID">
     <?php
             if($schoolListRS != false){
-                while($row = mysql_fetch_array($schoolListRS)){
+                while($row = mysqli_fetch_array($schoolListRS, MYSQLI_ASSOC)){
     ?>
                 <option value="<?= $row['id'] ?>" <?php if($schoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['location_code'] ?></option>
     <?php
@@ -218,7 +218,7 @@
         		<option value="0">-</option>
 <?php
         if($subSchoolListRS != false){
-            while($row = mysql_fetch_array($subSchoolListRS)){
+            while($row = mysqli_fetch_array($subSchoolListRS, MYSQLI_ASSOC)){
             	if($schoolID == $row['parent_id']){
 ?>
             <option value="<?= $row['id'] ?>" <?php if($childSchoolID == $row['id']){echo 'SELECTED';} ?>><?= $row['name'] ?></option>
@@ -237,7 +237,7 @@
     			<option value="-1" <?php if($familyID == -1){echo 'SELECTED';} ?>>No Family</option>
     <?php
             if($familyListRS != false){
-                while($row = mysql_fetch_array($familyListRS)){
+                while($row = mysqli_fetch_array($familyListRS, MYSQLI_ASSOC)){
     ?>
                 <option value="<?= $row['id'] ?>" <?php if($familyID == $row['id']){echo 'SELECTED';} ?>><?= $row['display_name'] ?></option>
     <?php
