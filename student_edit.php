@@ -9,7 +9,8 @@
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
 
 	//Setting REQUEST Vars
-	$stid = $_REQUEST['stid'];
+    $stid = $_REQUEST['stid'];
+    $familyName = '';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     	
@@ -91,13 +92,19 @@
         }
         
         $datebits = explode('-',$currentStudent['enroll_date']);
+        $enr_yr = '';
+        $enr_mo = '';
+        $enr_day = '';
         if (sizeof($datebits) == 3) {
             $enr_yr = intval($datebits[0]);
             $enr_mo = intval($datebits[1]);
-            $enr_day = intval($datebits[2]);        
+            $enr_day = intval($datebits[2]);
         }
 		
-        $datebits = explode('-',$currentStudent['expire_date']);
+        $datebits = explode('-', $currentStudent['expire_date']);
+        $exp_yr = '';
+        $exp_mo = '';
+        $exp_day = '';       
         if (sizeof($datebits) == 3) {
             $exp_yr = intval($datebits[0]);
             $exp_mo = intval($datebits[1]);
@@ -144,7 +151,7 @@
     </table>
 </form>
 <?php
-    }else{
+    } else {
 ?>
 <form name="studentEdit" action="index.php?action=stu.edit" method="POST">
     <table align="left" bgcolor="White" width="100%">
