@@ -81,7 +81,7 @@
         	
         	$showRank = true;
         	$ii = 0;
-            while($row = mysql_fetch_array($rankListRS)){
+            while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)){
             	
             	if($showRank){
                 	$rankListName[$ii] = $row['rank_name'];
@@ -129,12 +129,12 @@
         <td width="5%">&nbsp;</td>
         <td align="left">
 <?php
-        if(mysql_num_rows($gradListRS) > 0){
+        if(mysqli_num_rows($gradListRS) > 0){
             $currentSchool = '';
             $firstSchool = true;
 ?>
 <?php
-            while($glRow = mysql_fetch_array($gradListRS)){
+            while($glRow = mysqli_fetch_array($gradListRS, MYSQLI_ASSOC)){
                 if($currentSchool != $glRow['school_id']){
                     $currentSchool = $glRow['school_id'];
                     if(!$firstSchool){echo '            </ul>';}
