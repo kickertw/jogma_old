@@ -26,7 +26,7 @@
         $gradListTitle = $gradListInfo;
     }
     
-    $gradListTitle .= '<br><br>There is currently a total of <span style="color: white;text-decoration: bold;font-size: 10pt;">' . mysql_num_rows($studentListRS) . '</span> student(s) ';
+    $gradListTitle .= '<br><br>There is currently a total of <span style="color: white;text-decoration: bold;font-size: 10pt;">' . mysqli_num_rows($studentListRS) . '</span> student(s) ';
     
      
 ?>
@@ -43,7 +43,7 @@
     </tr>
 <?php
 	$outOfDateRanks = false;
-    while($row = mysql_fetch_array($studentListRS)){
+    while($row = mysqli_fetch_array($studentListRS, MYSQLI_ASSOC)){
         if(!isset($userIDs)){
             $userIDs = $row['id'];
         }else{
