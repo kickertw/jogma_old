@@ -32,10 +32,10 @@
 
     //SETTTING REQUEST VARS
     $gsid = $_REQUEST['gsid'] ?? 0;
-    if (isset($_POST['gradListID'])){
+    if (isset($_POST['gradListID'])) {
     	$glid = $gradListID;
-    }else{
-    	$glid = $_REQUEST['glid'];
+    } else {
+    	$glid = $_REQUEST['glid'] ?? 0;
     }
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateListButton'])){
