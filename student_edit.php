@@ -25,12 +25,12 @@
     	$dob_mo = $_POST['dob_mo'];
     	$dob_day = $_POST['dob_day'];
     	$dob_yr = $_POST['dob_yr'];
-    	$exp_mo = $_POST['exp_mo'];
-    	$exp_day = $_POST['exp_day'];
-    	$exp_yr = $_POST['exp_yr'];
-    	$enr_mo = $_POST['enr_mo'];
-    	$enr_day = $_POST['enr_day'];
-    	$enr_yr = $_POST['enr_yr'];
+    	$exp_mo = $_POST['exp_mo'] ?? '';
+    	$exp_day = $_POST['exp_day'] ?? '';
+    	$exp_yr = $_POST['exp_yr'] ?? '';
+    	$enr_mo = $_POST['enr_mo'] ?? '';
+    	$enr_day = $_POST['enr_day'] ?? '';
+    	$enr_yr = $_POST['enr_yr'] ?? '';
     	
     	$firstName = $_POST['firstName'];    	
     	$lastName = $_POST['lastName'];
