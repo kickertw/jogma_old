@@ -421,7 +421,7 @@
                 return false;
             }
 
-            return mysqli_affected_rows($this->link) == 1 || updStatus;
+            return mysqli_affected_rows($this->link) == 1 || $updStatus;
         }
 
         function updateStudentStatus($studentIDs, $active){
@@ -434,7 +434,7 @@
 
             mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
 
-            return mysqli_affected_rows($this->link) == 1 || updStatus;
+            return mysqli_affected_rows($this->link) >= 1;
         }
 
         function updateStudentRank($studentID, $newRankID){
