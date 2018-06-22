@@ -58,6 +58,7 @@
 			
 			if (isset($_POST['addToListButton']) || isset($_POST['addToListButton2'])){
             	for($i = 0; $i < count($studentIDs); $i++){
+                    echo 'index = ['. $i . '], studentID = ' . $studentIDs[$i] ?? '-';
                     $gradListDAO->addGrad($gradListID, 
                                           $studentIDs[$i], 
                                           $_POST['oldRank_'. $studentIDs[$i]],
