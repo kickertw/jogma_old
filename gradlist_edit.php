@@ -26,7 +26,7 @@
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     
     //SETTING POST VARS
-    if (isset($_POST['userIDs'])){
+    if (isset($_POST['userIDs'])) {
         $userIDs = $_POST['userIDs'];
     }
     $gradListID = $_POST['gradListID'] ?? 0;    
@@ -46,7 +46,6 @@
 
         for($ii = 0; $ii < count($idList); $ii++){
             $newRank = $_POST['newRank_'. $idList[$ii]];
-            //eval('$newRank = $_POST[\'newRank_' . $idList[$ii]. '\'];');
             $gradListDAO->updateGradRank($gradListID, $idList[$ii], $newRank);
         }
         
