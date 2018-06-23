@@ -16,7 +16,7 @@
 		'postal' => '',
 		'country' => '',
 		'poc' => '',
-		'active' => '',
+		'active' => '1',
 		'credit' => '',
 	);	
 
