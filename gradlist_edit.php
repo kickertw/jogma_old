@@ -29,6 +29,10 @@
     if (isset($_POST['userIDs'])) {
         $userIDs = $_POST['userIDs'];
     }
+    if (isset($_POST['schoolID'])) {
+        $schoolID = $_POST['schoolID'];
+    }
+
     $gradListID = $_POST['gradListID'] ?? 0;    
     $rankUpdateStatus = '';
 
@@ -53,15 +57,12 @@
         $rankUpdateStatus = "Student's new ranks have been updated.";
     }
 
-	//OLD CODE TO INDIVIDUALLY REMOVE A STUDENT (NON-FINALIZED LIST)
-    //if($gsid > 0 && $act2 == 'rm'){
-    	//remove a student from a gradlist
-    //    $gradListDAO->removeGrad($gsid);
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['removeStudentsButton'])){
     	//remove student(s) from a gradlist
     	foreach($_POST['gsid'] as $value) { 
 			$gradListDAO->removeGrad($value); 
-		} 
+        }
+        $schoolId = 
     }elseif($gsid > 0 && $act2 == 'ud'){
     	//Undo a student's graduation
 		$undoErrMsg = $gradListDAO->undoGrad($gsid, $scid, $userID, $FULL_GRAD_FEE);

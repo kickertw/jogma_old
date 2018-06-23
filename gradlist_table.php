@@ -173,6 +173,6 @@
 ?>
 </table>
 <input name="gradListID" type="hidden" value="<?= $glid ?>"/>
-<input name="schoolID" type="hidden" value="<?= $schoolID ?? 0 ?>"/>
+<input name="schoolID" type="hidden" value="<?= $schoolID ?>"/>
 <input name="userIDs" type="hidden" value="<?= $userIDs ?>"/>
 </form>
