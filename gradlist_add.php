@@ -30,7 +30,9 @@
     $studentIDs = $_POST['studentIDs'] ?? '';
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $step = $_POST['step'];
+        if (isset($_POST['step'])){
+            $step = $_POST['step'];
+        }
 
         if ($step == 2) {
             $gradDate = $gradMo . '-' . digitMasker($gradDay) . '-' . $gradYear;
