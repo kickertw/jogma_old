@@ -24,22 +24,14 @@
     	
     	//IF GIVEN A CREDIT...WHAT DO WE DO...
     	if(isset($pvc)){
-            $crleft = $_REQUEST['crleft'];
-
-            if(isset($_REQUEST['amtPaid'])){
-				$amt = $_REQUEST['amtPaid'];
-            }elseif(isset($_POST['amtPaid'])){
-            	$amt = $_POST['amtPaid'];
-            }else{
-				$amt = 0;
-				
-            }
+            $crleft = $_REQUEST['crleft'] ?? 0;
+            $amt = $_REQUEST['amtPaid'] ?? $_POST['amtPaid'] ?? 0;
             
 	        $schoolRS = $studentDAO->getSchoolByGradList($gradListID);
-	        if($amt == 0 && $crleft > 0){
-	                $gradListDAO->updateSchoolCredit($schoolRS['id'], $crleft);
-	        }else{
-	                $gradListDAO->updateSchoolCredit($schoolRS['id'], 0);
+	        if ($amt == 0 && $crleft > 0) {
+                $gradListDAO->updateSchoolCredit($schoolRS['id'], $crleft);
+	        } else {
+                $gradListDAO->updateSchoolCredit($schoolRS['id'], 0);
 	        }            
 		}
     
