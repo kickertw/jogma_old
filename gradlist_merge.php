@@ -15,6 +15,9 @@
 
     $userDAO = new UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
+    if (isset($_POST['userIDs'])) {
+        $userIDs = $_POST['userIDs'];
+    }
 
     $gradListDAO = new GradListDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);

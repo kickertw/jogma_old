@@ -41,8 +41,7 @@
     	$glid = $_REQUEST['glid'] ?? 0;
     }
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateListButton'])){
-    	
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateListButton'])) {    	
         $idList = explode(',', $userIDs);
 
         for($ii = 0; $ii < count($idList); $ii++){
