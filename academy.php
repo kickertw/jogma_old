@@ -5,7 +5,21 @@
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
 
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
-    
+	
+	$loadRow = array(
+		'location_code' => '',
+		'name' => '',
+		'address1' => '',
+		'address2' => '',
+		'city' => '',
+		'state' => '',
+		'postal' => '',
+		'country' => '',
+		'poc' => '',
+		'active' => '',
+		'credit' => '',
+	);	
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['updateProfileButton'])) {
         	$pass1 = $_POST['pass1'];
@@ -67,21 +81,7 @@
 		  	$studentDAO->removeSchool($schoolID);
 		  	$errorMsg = "Removal Successful";
 		}
-    } else {
-		$loadRow = array(
-			'location_code' => '',
-			'name' => '',
-			'address1' => '',
-			'address2' => '',
-			'city' => '',
-			'state' => '',
-			'postal' => '',
-			'country' => '',
-			'poc' => '',
-			'active' => '',
-			'credit' => '',
-		);
-	}
+    }
 
     include('academy_table.php');
 ?>
