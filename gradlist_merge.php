@@ -43,23 +43,19 @@
      }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $updateListButton = $_POST['updateListButton'];
-        $updateCurrentRanks = $_POST['updateCurrentRanks'];
-        $mergeButton = $_POST['mergeButton'];
-        
-        if(isset($updateListButton)){
-            $idList = explode(',',$userIDs);
+        if (isset($_POST['updateListButton'])) {
+            $idList = explode(',', $userIDs ?? '');
 
-            for($ii = 0;$ii < count($idList);$ii++){
+            for($ii = 0; $ii < count($idList); $ii++) {
                 eval('$newRank = $newRank_' . $idList[$ii]. ';');
-                $gradListDAO->updateGradRank($gradListID,$idList[$ii],$newRank);
+                $gradListDAO->updateGradRank($gradListID, $idList[$ii], $newRank);
             }
 
             $glid = $gradListID;
             $rankUpdateStatus = "Student's new ranks have been updated.";
             $step = 2;
-        }elseif(isset($updateCurrentRanks)){
-            $idList = explode(',',$userIDs);
+        } elseif (isset($_POST['updateCurrentRanks'])) {
+            $idList = explode(',', $userIDs);
 
             for($ii = 0;$ii < count($idList);$ii++){
                 $gradListDAO->updateGradOldRank($gradListID,$idList[$ii]);
@@ -68,7 +64,7 @@
                         $glid = $gradListID;
             $rankUpdateStatus = "Current ranks have been updated.";
             $step = 2;
-        }elseif(isset($mergeButton)){
+        } elseif (isset($_POST['mergeButton'])) {
             $updateResultText = '';
             $gradStudentRS = $gradListDAO->getGradStudents($gradListID);
             $setReadOnly = true;
