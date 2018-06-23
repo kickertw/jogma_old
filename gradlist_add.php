@@ -1,7 +1,5 @@
 <?php
     include('includes/formValidation.php');
-    
-    if (!isset($step)){ $step = 1; }
 
     //Including DAO Classes
     require_once($classpath . 'GradListDAO.php');
@@ -31,12 +29,10 @@
     $gradListID = $_POST['gradListID'] ?? '';
     $studentIDs = $_POST['studentIDs'] ?? '';
     
-    if (!isset($step)){
-        $step = $_POST['step'] ?? 1;
-    }
-    
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') { 		   
-        if ($step == 2){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $step = $_POST['step'];
+
+        if ($step == 2) {
             $gradDate = $gradMo . '-' . digitMasker($gradDay) . '-' . $gradYear;
 
             if (datecheck($gradDate) == true){
@@ -52,7 +48,7 @@
                 $errMsg = "[$gradMo-$gradDay-$gradYear] is an invalid date.";
                 $step = 1;
             }
-        }elseif ($step == 3){
+        } elseif ($step == 3) {
             $studentListRS = $studentDAO->getStudents($schoolID, $rankID, $firstName, $lastName, 1, $orderBy, $orderDir, $orderBy2, $orderDir2, $gradListID, '', true);
 
 			if (!isset($_POST['addToListButton2']) && !isset($_POST['gotoNextStep'])){
@@ -76,7 +72,7 @@
 
     <form name="gradListWizard" action="index.php?action=<?= $action ?>" method="POST">
 <?php
-    if($step > 1){
+    if($step > 1) {
 ?>
         <input name="gradListID" type="hidden" value="<?= $gradListID ?>"/>
 <?php
@@ -143,7 +139,7 @@
             </td>
         </tr>
 <?php
-    }elseif($step == 2){
+    } elseif ($step == 2) {
         if(!isset($_POST['editMode'])){
 ?>
         <tr><td align="left" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>Step 2:&nbsp;&nbsp;Select Students To Graduate<b></u></td></tr>
