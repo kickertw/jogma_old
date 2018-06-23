@@ -6,8 +6,8 @@
 
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['updateProfileButton'])){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['updateProfileButton'])) {
         	$pass1 = $_POST['pass1'];
         	$pass2 = $_POST['pass2'];
         	$username = $_POST['username'];
@@ -23,8 +23,7 @@
                 $errorMsg = "Your Profile has been successfully updated!";
             }
         } elseif(isset($_POST['loadSchoolButton'])) {
-        	$schoolID = $_POST['schoolID'];
-        
+        	$schoolID = $_POST['schoolID'];        
             $loadRow = $studentDAO->getSchool($schoolID);
         } elseif(isset($_POST['updateSchoolButton']) && strcmp($_POST['updateSchoolButton'], 'Update') == 0) {
         	$updateSchoolID = $_POST['updateSchoolID'];

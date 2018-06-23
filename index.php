@@ -7,9 +7,9 @@
 	// For downloading of graduation lists in CSV format	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['getCSVButton'])) {
 		include('gradlist_csv.php');
-	}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['getBBCSVButton'])){
+	} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['getBBCSVButton'])) {
 	  	include('gradlist_bb_csv.php');
-	}else{
+	} else {
 	    include('includes/userValidation.php');
 	    include('includes/header.php');
 	    

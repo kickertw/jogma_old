@@ -96,10 +96,10 @@
         <td>&nbsp;</td>
         <td>
 <?php
-        if(isset($loadSchoolButton)){
+        if (isset($_POST['loadSchoolButton'])) {
             echo '<input name="updateSchoolID" type="hidden" value="' . $schoolID . '">';
             echo '<input name="updateSchoolButton" type="submit" value="Update">&nbsp;&nbsp;<b>OR</b>&nbsp;&nbsp;<a href="index.php?action=am">Goto Add Mode</a>';
-        }else{
+        } else {
             echo '<input name="updateSchoolButton" type="submit" value="Add">';
         }
 ?>
