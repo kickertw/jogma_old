@@ -35,7 +35,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') { 		   
         if ($step == 2){
             $gradDate = $gradMo . '-' . digitMasker($gradDay) . '-' . $gradYear;
-            
+
             if (datecheck($gradDate) == true){
    	            $gradDate = $gradYear . '-' . $gradMo . '-' . digitMasker($gradDay);
                 $gradListID = $gradListDAO->createGradList($schoolID, $gradDate, $_COOKIE["uid"]);
@@ -57,8 +57,8 @@
 			}
 			
 			if (isset($_POST['addToListButton']) || isset($_POST['addToListButton2'])){
-            	for($i = 0; $i < count($studentIDs); $i++){
-                    echo 'index = ['. $i . '], studentID = ' . $studentIDs[$i] ?? '-';
+                echo 'studentID count = ' . count($studentIDs);
+                for($i = 0; $i < count($studentIDs); $i++) {
                     $gradListDAO->addGrad($gradListID, 
                                           $studentIDs[$i], 
                                           $_POST['oldRank_'. $studentIDs[$i]],
