@@ -82,8 +82,8 @@
         <td align="right" width="25%">Status: </td>
         <td align="left" width="75%">
             <select name="isActive">
-                <option value="1" <?php if($loadRow['active'] == '1'){echo 'SELECTED';} ?>>Active</option>
-                <option value="0" <?php if($loadRow['active'] ?? 1 == '0'){echo 'SELECTED';} ?>>Inactive</option>
+                <option value="1" <?php if($loadRow['active'] == 1){echo 'SELECTED';} ?>>Active</option>
+                <option value="0" <?php if($loadRow['active'] == 0){echo 'SELECTED';} ?>>Inactive</option>
             </select>
         </td>
     </tr>
