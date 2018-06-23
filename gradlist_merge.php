@@ -9,9 +9,9 @@
     //Server (is it HTTP or HTTPS)
     $paypal_return = 'http://www.jogma.net';
     
-    $step = isset($_REQUEST['step']) ? $_REQUEST['step'] : $_POST['step'];
-    $glid = isset($_REQUEST['glid']) ? $_REQUEST['glid'] : $_POST['glid'];
-    $gradListID = isset($_REQUEST['gradListID']) ? $_REQUEST['gradListID'] : $_POST['gradListID'];
+    $step =  $_REQUEST['step'] ?? $_POST['step'] ?? 1;
+    $glid = $_REQUEST['glid'] ?? $_POST['glid'] ?? 0;
+    $gradListID = $_REQUEST['gradListID'] ?? $_POST['gradListID'] ?? 0;
 
     $userDAO = new UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
@@ -19,8 +19,8 @@
     $gradListDAO = new GradListDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
 
-    if($step==3){
-        $pvc = isset($_REQUEST['pvc']) ? $_REQUEST['pvc'] : $_POST['pvc'];        
+    if ($step == 3) {
+        $pvc = $_REQUEST['pvc'] ?? $_POST['pvc'] ?? 0;        
     	
     	//IF GIVEN A CREDIT...WHAT DO WE DO...
     	if(isset($pvc)){
@@ -165,11 +165,11 @@
     <tr><td align="left" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b><?= $stepText ?><b></u></td></tr>
     <tr><td>&nbsp;</td></tr>
 <?php
-    if(strlen($rankUpdateStatus) > 0){
+    if (strlen($rankUpdateStatus) > 0) {
         echo '  <tr><td colspan="2" align="center" class="success">' . $rankUpdateStatus . '</td></tr><tr><td>&nbsp;</td></tr>';
     }
 
-    if($step == 2 && $glid > 0){
+    if ($step == 2 && $glid > 0) {
 ?>
     <tr><td colspan="2">
 <?php
@@ -177,8 +177,8 @@
 ?>
     </td></tr>
 <?php
-    }elseif($step == 3){
-        if ($isGLPaid){
+    } elseif($step == 3) {
+        if ($isGLPaid) {
 ?>
     <tr>
         <td align="center" colspan="2">
@@ -188,7 +188,7 @@
     </tr>
     <tr><td>&nbsp;</td></tr>
 <?php
-        }else{
+        } else {
             //Need to determine amount to pay
             $gradFeeAmount = $gradListDAO->calculateGradFees($gradListID, $_COOKIE["uid"], $FULL_GRAD_FEE);
             //$finalDiscount = $gradListDAO->calculateGradDiscount($gradListID, $FAMILY_DISCOUNT);
@@ -201,21 +201,18 @@
 ?>
     <tr>
         <td colspan="2" align="center">
-<!--                At this time, changes are being made to JOGMa.  Please call 301-473-7792 or e-mail jrijefferson@aol.com for further payment instructions.
--->
-                Total Graduation Fees = $<?= convertToCurrency($gradFeeAmount) ?><br>
-                <!--Total Family Discount = ($<?= convertToCurrency($finalDiscount) ?>)<br>-->
+            Total Graduation Fees = $<?= convertToCurrency($gradFeeAmount) ?><br>
+            <!--Total Family Discount = ($<?= convertToCurrency($finalDiscount) ?>)<br>-->
 <?php
-                        if ($creditAmount > 0){
+            if ($creditAmount > 0){
 ?>
-                        Total Credit Amount = $<?= convertToCurrency($creditAmount) ?><br>
+                Total Credit Amount = $<?= convertToCurrency($creditAmount) ?><br>
 <?php
-                        }
+            }
 
-                        if ($amountDue > 0){
+            if ($amountDue > 0){
 ?>
-
-                <b>Amount Due = $<?= convertToCurrency($amountDue) ?></b><br><br>
+            <b>Amount Due = $<?= convertToCurrency($amountDue) ?></b><br><br>
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="<?= $JRFEmailAcct ?>">
             <input type="hidden" name="item_name" value="<?= $gradInfo['grad_date']?> Grad Fee Payment (<?= $schoolInfo['city']?>, <?= $schoolInfo['state']?>)">
@@ -250,13 +247,13 @@
     <tr><td>&nbsp;</td></tr>
 <?php
         }
-    }elseif($step == 4){
+    } elseif ($step == 4) {
 ?>
     <tr><td colspan="2" align="center"><?= $updateResultText ?></td></tr>
     <tr><td colspan="2">&nbsp;</td></tr>
     <tr><td colspan="2" align="center"><a href="index.php?action=gl">Click Here To Continue</a></td></tr>
 <?php
-    }else{
+    } else {
 ?>
     <tr>
         <td width="5%">&nbsp;</td>
