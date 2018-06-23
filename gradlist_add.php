@@ -57,16 +57,13 @@
 			}
 			
 			if (isset($_POST['addToListButton']) || isset($_POST['addToListButton2'])){
-                echo 'studentID count = ' . count($studentIDs);
                 for($i = 0; $i < count($studentIDs); $i++) {
-                    $gradListDAO->addGrad($gradListID, 
-                                          $studentIDs[$i], 
-                                          $_POST['oldRank_'. $studentIDs[$i]],
-                                          $_POST['newRank_'.$studentIDs[$i]]);
+                    if (isset($studentIDs[$i])){
+                        $gradListDAO->addGrad($gradListID, $studentIDs[$i], $_POST['oldRank_'. $studentIDs[$i]], $_POST['newRank_'.$studentIDs[$i]]);
+                    }
                 }
             }
-        }
-        
+        }        
     }
     
     if ($action == 'gl.edit'){
