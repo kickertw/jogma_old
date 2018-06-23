@@ -29,9 +29,6 @@
     if (isset($_POST['userIDs'])) {
         $userIDs = $_POST['userIDs'];
     }
-    if (isset($_POST['schoolID'])) {
-        $schoolID = $_POST['schoolID'];
-    }
 
     $gradListID = $_POST['gradListID'] ?? 0;    
     $rankUpdateStatus = '';
@@ -62,7 +59,6 @@
     	foreach($_POST['gsid'] as $value) { 
 			$gradListDAO->removeGrad($value); 
         }
-        $schoolId = 
     }elseif($gsid > 0 && $act2 == 'ud'){
     	//Undo a student's graduation
 		$undoErrMsg = $gradListDAO->undoGrad($gsid, $scid, $userID, $FULL_GRAD_FEE);

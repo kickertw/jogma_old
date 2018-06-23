@@ -9,8 +9,10 @@
 <?php
 	require_once('includes/util.php');
 	
-    if (isset($_REQUEST['scid'])){
+    if (isset($_REQUEST['scid'])) {
         $schoolID = $_REQUEST['scid'];
+    } elseif (isset($_POST['schoolID'])) {
+        $schoolID = $_POST['schoolID'];
     }
     
     if (isset($_REQUEST['glid'])){
