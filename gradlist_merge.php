@@ -47,7 +47,7 @@
             $idList = explode(',', $userIDs ?? '');
 
             for($ii = 0; $ii < count($idList); $ii++) {
-                eval('$newRank = $newRank_' . $idList[$ii]. ';');
+                $newRank = $_POST['newRank_'. $idList[$ii]];
                 $gradListDAO->updateGradRank($gradListID, $idList[$ii], $newRank);
             }
 
