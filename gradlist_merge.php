@@ -104,7 +104,7 @@
         }
     }
 
-    if($gsid > 0){
+    if($gsid ?? 0 > 0){
         $gradListDAO->removeGrad($gsid);
     }
 
@@ -165,7 +165,7 @@
     <tr><td align="left" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b><?= $stepText ?><b></u></td></tr>
     <tr><td>&nbsp;</td></tr>
 <?php
-    if (strlen($rankUpdateStatus) > 0) {
+    if (strlen($rankUpdateStatus ?? '') > 0) {
         echo '  <tr><td colspan="2" align="center" class="success">' . $rankUpdateStatus . '</td></tr><tr><td>&nbsp;</td></tr>';
     }
 
