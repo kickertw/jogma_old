@@ -39,7 +39,6 @@
         } elseif(isset($_POST['loadSchoolButton'])) {
         	$schoolID = $_POST['schoolID'];        
 			$loadRow = $studentDAO->getSchool($schoolID);
-			echo 'loadrow[active] = ' . $loadRow['active'];
         } elseif(isset($_POST['updateSchoolButton']) && strcmp($_POST['updateSchoolButton'], 'Update') == 0) {
         	$updateSchoolID = $_POST['updateSchoolID'];
         	$code = $_POST['code'];
