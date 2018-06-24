@@ -23,6 +23,13 @@
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     
+	$e_userRow = array(
+		'username' => '',
+		'fullname' => '',
+		'email' => '',
+		'show_advanced_ranks' => 0
+	);
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
         if(isset($_POST['updateProfileButton'])){
@@ -59,7 +66,7 @@
         	
             $errorMsg = passwordCheck($e_pass1, $e_pass2);
 
-            if( strlen($errorMsg)==0 ){
+            if (strlen($errorMsg) == 0) {
                 $userDAO->updateUserInfo($updateUserID, $e_username, $e_fullname, $e_email, $e_ph1, $e_ph2, $e_pass1, $e_status, $e_accesslvl, $e_rank_display);
                 $schoolListRS = $studentDAO->getSchoolList(0,1);
                 
