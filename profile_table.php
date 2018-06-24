@@ -44,18 +44,18 @@
         <td align="right" width="20%">Status: </td>
         <td align="left" width="80%">
 <?
-    if ($e_userRow['active'] == 1){
+    $userIsActive = '';
+    $userOnProb = '';
+    $userIsNotActive = 'SELECTED';
+
+    if ($e_userRow['active'] == 1) {
         $userIsActive = 'SELECTED';
         $userIsNotActive = '';
         $userOnProb = '';
-    }elseif ($e_userRow['active'] == 2){
+    } elseif ($e_userRow['active'] == 2) {
       	$userOnProb = 'SELECTED';
       	$userIsActive = '';
       	$userIsNotActive = '';
-    }else{
-        $userIsActive = '';
-        $userOnProb = '';
-        $userIsNotActive = 'SELECTED';
     }
 ?>
             <select name="e_status">
