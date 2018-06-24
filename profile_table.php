@@ -48,16 +48,14 @@
     $userOnProb = '';
     $userIsNotActive = 'SELECTED';
 
-    if (isset($e_userRow)) {
-        if ($e_userRow['active'] == 1) {
-            $userIsActive = 'SELECTED';
+    if ($e_userRow['active'] == 1) {
+        $userIsActive = 'SELECTED';
+        $userIsNotActive = '';
+        $userOnProb = '';
+    } elseif ($e_userRow['active'] == 2) {
+            $userOnProb = 'SELECTED';
+            $userIsActive = '';
             $userIsNotActive = '';
-            $userOnProb = '';
-        } elseif ($e_userRow['active'] == 2) {
-              $userOnProb = 'SELECTED';
-              $userIsActive = '';
-              $userIsNotActive = '';
-        }
     }
 ?>
             <select name="e_status">
