@@ -50,7 +50,7 @@
                 $userDAO->updateUserInfo($_COOKIE["uid"], $username, $fullname, $email, $ph1, $ph2, $pass1, 1, $accessLevel, $rank_display);
                 $errorMsg = "Your Profile has been successfully updated!";
             }
-        } elseif(isset($_POST['loadUserButton']) {
+        } elseif(isset($_POST['loadUserButton'])) {
             $e_userRow = $userDAO->getUserInfo($e_userID);
         } elseif(isset($_POST['updateUserButton']) && strcmp($_POST['updateUserButton'], 'Update User') == 0) {
         	$updateUserID = $_POST['updateUserID'];
