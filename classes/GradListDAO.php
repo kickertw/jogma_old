@@ -715,7 +715,7 @@
                     mysqli_query($this->link, $query);
                 }
                 catch (Exception $e) {
-                    die('An error has occurred at GradListDAO->insertPaypalTransaction() - '$e->getMessage());
+                    die('An error has occurred at GradListDAO->insertPaypalTransaction() - ' . $e->getMessage());
                 }
             }        
 
