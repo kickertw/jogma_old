@@ -43,7 +43,7 @@
     <tr>
         <td align="right" width="20%">Status: </td>
         <td align="left" width="80%">
-<?
+<?php
     $userIsActive = '';
     $userOnProb = '';
     $userIsNotActive = 'SELECTED';
