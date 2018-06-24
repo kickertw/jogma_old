@@ -19,6 +19,15 @@
     //Returning a list of schools this user has access to
     $schoolListRS = $studentDAO->getSchoolList($_COOKIE["uid"]);
     
+    $schoolID = $_POST['schoolID'] ?? '';
+    $rankID = $_POST['rankID'] ?? '';
+    $firstName = $_POST['firstName'] ?? '';
+    $lastName = $_POST['lastName'] ?? '';
+    $orderBy = $_POST['orderBy'] ?? '';
+    $orderDir = $_POST['orderDir'] ?? '';
+    $orderBy2 = $_POST['orderBy2'] ?? '';
+    $orderDir2 = $_POST['orderDir2'] ?? '';
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     	$gradListID = $_POST['gradListID'];
@@ -46,16 +55,7 @@
                 	$step = 1;
             	}
             }
-        } elseif ($step == 3){
-            $schoolID = $_POST['schoolID'];
-            $rankID = $_POST['rankID'];
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $orderBy = $_POST['orderBy'];
-            $orderDir = $_POST['orderDir'];
-            $orderBy2 = $_POST['orderBy2'];
-            $orderDir2 = $_POST['orderDir2'];
-
+        } elseif ($step == 3) {
             $studentListRS = $studentDAO->getStudents($schoolID, $rankID, $firstName, $lastName, 1, $orderBy, $orderDir, $orderBy2, $orderDir2, $gradListID, '', false);
 
             if (!isset($_POST['gotoNextStep'])){
