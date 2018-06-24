@@ -66,14 +66,13 @@
 <?php
 		if($gradListDAO->isGradListPaid($gradListID)){
 ?>
-				<a href="index.php?action=gl.edit&act2=ud&scid=<?= $scid ?>&glid=<?= $glid ?>&gsid=<?= $row['gs_id'] ?>" onclick="return confirm('Are you sure you want to undo [<?= str_replace("'", "\'",$row['first_name']) . ' ' . str_replace("'", "\'", $row['last_name']) ?>] from this list?');">
+				<a href="index.php?action=gl.edit&act2=ud&scid=<?= $scid ?? '' ?>&glid=<?= $glid ?>&gsid=<?= $row['gs_id'] ?>" onclick="return confirm('Are you sure you want to undo [<?= str_replace("'", "\'",$row['first_name']) . ' ' . str_replace("'", "\'", $row['last_name']) ?>] from this list?');">
 					<img src="<?= $imgRoot ?>button_undo.png" border="0" alt="Undo Graduation">
 				</a>
 <?php
 		}else{
 ?>
 				<input name="gsid[]" type="checkbox" value="<?= $row['gs_id'] ?>">
-				<!-- <a href="index.php?action=gl.edit&act2=rm&scid=<?= $scid ?? '' ?>&glid=<?= $glid ?>&gsid=<?= $row['gs_id'] ?>" onclick="return confirm('Are you sure you want to remove [<?= str_replace("'", "\'",$row['first_name']) . ' ' . str_replace("'", "\'", $row['last_name']) ?>] from this list?');"><img src="<?= $imgRoot ?>button_delete.png" border="0" alt="Remove Student"></a> -->
 <?php
 		}
 ?>				
