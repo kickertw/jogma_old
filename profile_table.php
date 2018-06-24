@@ -134,11 +134,11 @@
         <td>&nbsp;</td>
         <td>
 <?php
-        if(isset($loadUserButton)){
+        if (isset($_POST['loadUserButton'])) {
             echo '<input name="updateUserID" type="hidden" value="' . $e_userID . '">';
             echo '<input name="updateUserButton" type="submit" value="Update User">';
             echo '&nbsp;&nbsp; <b>OR</b> &nbsp;&nbsp;<a href="index.php?action=pro">Goto Add Mode</a>';
-        }else{
+        } else {
             echo '<input name="updateUserButton" type="submit" value="Add User">';
         }
 ?>
