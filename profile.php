@@ -18,19 +18,14 @@
     
     include($classpath . 'StudentDAO.php');
 
+    $e_userID = $_POST['e_userID'] ?? -1;
     $userDAO = new UserDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $isAdmin = $userDAO->isSuperAdmin($_COOKIE["uid"]);
-
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    	
-    	//Setting POST Buttons
-    	$updateProfileButton = $_POST['updateProfileButton'];
-    	$loadUserButton = $_POST['loadUserButton'];
-    	$updateUserButton = $_POST['updateUserButton'];
     
-        if(isset($updateProfileButton)){
+        if(isset($_POST['updateProfileButton'])){
         	$pass1 = $_POST['pass1'];
         	$pass2 = $_POST['pass2'];
         	$username = $_POST['username'];
@@ -47,10 +42,9 @@
                 $userDAO->updateUserInfo($_COOKIE["uid"], $username, $fullname, $email, $ph1, $ph2, $pass1, 1, $accessLevel, $rank_display);
                 $errorMsg = "Your Profile has been successfully updated!";
             }
-        }elseif(isset($loadUserButton)){
-        	$e_userID = $_POST['e_userID'];
+        } elseif($_POST['loadUserButton']) {
             $e_userRow = $userDAO->getUserInfo($e_userID);
-        }elseif(isset($updateUserButton) && strcmp($updateUserButton, 'Update User') == 0){
+        } elseif(isset($_POST['updateUserButton']) && strcmp($_POST['updateUserButton'], 'Update User') == 0) {
         	$updateUserID = $_POST['updateUserID'];
         	$e_pass1 = $_POST['e_pass1'];
         	$e_pass2 = $_POST['e_pass2'];

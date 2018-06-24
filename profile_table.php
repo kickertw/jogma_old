@@ -1,6 +1,7 @@
 <?php
     $userRow = $userDAO->getUserInfo($_COOKIE["uid"]);
     $userListRS = $userDAO->getUserList($_COOKIE["uid"]);
+    $errorMsg = '';
 ?>
 
 <form name="profileQuery" action="index.php?action=pro" method="POST">
@@ -10,7 +11,7 @@
     </tr>
     <tr><td>&nbsp;</td></tr>
 <?php
-    if(strlen($errorMsg) > 0){
+    if (strlen($errorMsg) > 0) {
 ?>
     <tr><td align="center" colspan=2 class="error"><?= $errorMsg ?></td></tr>
     <tr><td>&nbsp;</td></tr>
