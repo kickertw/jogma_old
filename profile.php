@@ -28,7 +28,7 @@
 		'fullname' => '',
 		'email' => '',
         'show_advanced_ranks' => 0,
-        'active' = 1
+        'active' => 1
 	);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
