@@ -39,8 +39,8 @@
         	$username = $_POST['username'];
         	$fullname = $_POST['fullname'];
         	$email = $_POST['email'];
-        	$ph1 = $_POST['ph1'];
-        	$ph2 = $_POST['ph2'];
+        	$ph1 = $_POST['ph1'] ?? '';
+        	$ph2 = $_POST['ph2'] ?? '';
         	$rank_display = $_POST['rank_display'];
         	$accessLevel = $_POST['profile_access_level'];
         	      
