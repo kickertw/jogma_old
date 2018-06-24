@@ -46,11 +46,11 @@
         	      
             $errorMsg = passwordCheck($pass1, $pass2);
 
-            if( strlen($errorMsg)==0 ){            
+            if(strlen($errorMsg) == 0) {            
                 $userDAO->updateUserInfo($_COOKIE["uid"], $username, $fullname, $email, $ph1, $ph2, $pass1, 1, $accessLevel, $rank_display);
                 $errorMsg = "Your Profile has been successfully updated!";
             }
-        } elseif($_POST['loadUserButton']) {
+        } elseif(isset($_POST['loadUserButton']) {
             $e_userRow = $userDAO->getUserInfo($e_userID);
         } elseif(isset($_POST['updateUserButton']) && strcmp($_POST['updateUserButton'], 'Update User') == 0) {
         	$updateUserID = $_POST['updateUserID'];
@@ -59,8 +59,8 @@
         	$e_username = $_POST['e_username'];
         	$e_fullname = $_POST['e_fullname'];
         	$e_email = $_POST['e_email'];
-        	$e_ph1 = $_POST['e_ph1'];
-        	$e_ph2 = $_POST['e_ph2'];
+        	$e_ph1 = $_POST['e_ph1'] ?? '';
+        	$e_ph2 = $_POST['e_ph2'] ?? '';
 			$e_status = $_POST['e_status'];
 			$e_accesslvl = $_POST['e_accesslvl'];        	
         	$e_rank_display = $_POST['e_rank_display'];        	
@@ -72,8 +72,7 @@
                 $schoolListRS = $studentDAO->getSchoolList(0,1);
                 
                 while($row = mysqli_fetch_assoc($schoolListRS)){
-                	${sch_axs_.$row['id']} = $_POST['sch_axs_' . $row['id']];
-                    $userDAO->updateSchoolAccess($updateUserID, $row['id'], ${sch_axs_.$row['id']});
+                    $userDAO->updateSchoolAccess($updateUserID, $row['id'], $_POST['sch_axs_' . $row['id']]);
                 }
 
                 $errorMsg = "User Profile [$e_username] has been successfully updated!";
