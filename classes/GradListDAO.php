@@ -711,7 +711,12 @@
                 $query .= "                         VALUES ('$txn_id', 'JOGMA Internal Credit', '$item_number', '$payment_date', 'Completed', $payment_amount, ";
                 $query .= "					                'USD', 'n/a', 'n/a')";	
                 
-                $result = mysqli_query($this->link, $query) or die('Error at insertPaypalTransaction(...) in GradListDAO.php');
+                try {
+                    mysqli_query($this->link, $query);
+                }
+                catch (Exception $e) {
+                    die('An error has occurred at GradListDAO->insertPaypalTransaction() - '$e->getMessage());
+                }
             }        
 
             function markListPaid($userID, $gradListID, $amount){
