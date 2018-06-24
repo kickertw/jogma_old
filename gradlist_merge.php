@@ -23,10 +23,9 @@
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
 
     if ($step == 3) {
-        $pvc = $_REQUEST['pvc'] ?? $_POST['pvc'] ?? 0;        
-    	
     	//IF GIVEN A CREDIT...WHAT DO WE DO...
-    	if(isset($pvc)){
+    	if(isset($_REQUEST['pvc']) || isset($_POST['pvc'])){
+            $pvc = $_REQUEST['pvc'] ?? $_POST['pvc'];
             $crleft = $_REQUEST['crleft'] ?? 0;
             $amt = $_REQUEST['amtPaid'] ?? $_POST['amtPaid'] ?? 0;
             
@@ -38,7 +37,7 @@
 	        }            
 		}
     
-        $isValidPayment = $gradListDAO->priceVerifyFinal($gradListID, $pvc);
+        $isValidPayment = $gradListDAO->priceVerifyFinal($gradListID, $pvc ?? 0);
 
         if ($isValidPayment){
             $isValidPayment = $gradListDAO->markListPaid($_COOKIE["uid"], $gradListID, $amt);
