@@ -56,12 +56,12 @@
     $act2 = $_REQUEST['act2'] ?? '';
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['removeStudentsButton'])) {
     	//remove student(s) from a gradlist
-    	foreach($_POST['gsid'] as $value) {
+    	foreach ($_POST['gsid'] as $value) {
 			$gradListDAO->removeGrad($value); 
         }
-    } elseif($gsid > 0 && $act2 == 'ud') {
+    } elseif ($gsid > 0 && $act2 == 'ud') {
     	//Undo a student's graduation
-		$undoErrMsg = $gradListDAO->undoGrad($gsid, $scid, $userID, $FULL_GRAD_FEE);
+		$undoErrMsg = $gradListDAO->undoGrad($gsid, $scid ?? 0, $FULL_GRAD_FEE);
     }
 
     if($glid > 0){

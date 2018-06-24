@@ -428,7 +428,7 @@
             //
             //NOTE: Can only perform this if there are no future graduations for this student.
             //If an error is caught...will return error string
-            function undoGrad($gradStudentID, $schoolID, $userID, $gradFee){
+            function undoGrad($gradStudentID, $schoolID, $gradFee){
                 $errMsg = '';	
             
                 //STEP 1: Check to see if this is latest students grad.
@@ -447,15 +447,15 @@
                         $studentDAO->updateStudentRank($studentID, $priorRank);
         
                         //STEP 3: Give credit in system to proper academy (tricky)				
-                        if(strlen($errMsg) == 0){
-                            if(!is_null($priorRank) || !is_null($currentRank)){
-                                $creditAmt = $this->calculateSchoolCredit($priorRank, $currentRank);
-                                $creditAmt = $creditAmt * $gradFee;
-                                $this->updateSchoolCredit($schoolID,$creditAmt);
-                            }else{
-                                $errMsg = 'Unable to credit proper amount in system';
-                            }
-                        }
+                        // if(strlen($errMsg) == 0){
+                        //     if(!is_null($priorRank) || !is_null($currentRank)){
+                        //         $creditAmt = $this->calculateSchoolCredit($priorRank, $currentRank);
+                        //         $creditAmt = $creditAmt * $gradFee;
+                        //         $this->updateSchoolCredit($schoolID,$creditAmt);
+                        //     }else{
+                        //         $errMsg = 'Unable to credit proper amount in system';
+                        //     }
+                        // }
                         
                         //STEP 4: Remove student from gradlist
                         if(strlen($errMsg) == 0){
@@ -466,7 +466,7 @@
                     $errMsg = 'Unable to validate for lastest grad.';
                 }
                 
-                return $errMsg;			
+                return $errMsg;
             }
 
             //Made just for undoGrad(...)
