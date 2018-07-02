@@ -34,7 +34,7 @@
 	  	return $button;	  	
 	}
 	
-	function showRankMenu($isAdmin, $varName, $rankID, $rankListRS){	  
+	function showRankMenu($isAdmin, $varName, $rankID, $rankListRS) {
 	  	$retVal = '';
 		
 		if($isAdmin){
@@ -52,10 +52,8 @@
 
 		}else{
 	        if($rankListRS != false) {
-				echo 'RankListRS = true';
-    	    	while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)){
-					echo $row['id'] . ' - <input name="' . $varName . '" type="hidden" value="' . $rankID . '"/><b>' . $row['rank_name'] . '</b>';
-					if($rankID == $row['id']){    	    	  
+    	    	while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)) {
+					if($rankID == $row['id']) {
 						$retVal = '<input name="' . $varName . '" type="hidden" value="' . $rankID . '"/><b>' . $row['rank_name'] . '</b>';
 						return $retVal;
 					}

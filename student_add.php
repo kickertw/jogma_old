@@ -11,7 +11,7 @@
     $isUpdated = false;
     $familyID = 0;
     $familyName = '';
-    $rankID = 0;
+    $rankID = 1;
     $programID = 0;
     $dob_mo = '';
     $dob_day = '';
@@ -28,7 +28,6 @@
     $beltSize = '';
     $schoolID = 0;
     $childSchoolID = 0;
-    $rankID = 0;
     $phone1 = '';
     $phone2 = '';
     $addy1 = '';
@@ -132,7 +131,6 @@
         $programListRS = $studentDAO->getProgramList();
         
         //functions from the util class
-        if(!isset($rankID)){ $rankID = 1; }
         $rankHTML = showRankMenu($isAdmin, 'rankID', $rankID, $rankListRS);
         $programHTML = showProgramMenu('programID', $programID, $programListRS);
     }
