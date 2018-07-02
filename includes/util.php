@@ -58,6 +58,8 @@
 						return $retVal;
 					}
 				}
+			} else {
+				echo 'RankListRS = false';
 			}
 		}
 		
