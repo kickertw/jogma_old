@@ -51,9 +51,7 @@
             $retVal .= '</select>';
 
 		}else{
-		  	if(!isset($rankID)){ $rankID = 1; }
-		  	
-	        if($rankListRS != false){
+	        if($rankListRS != false) {
     	    	while($row = mysqli_fetch_array($rankListRS, MYSQLI_ASSOC)){
 					if($rankID == $row['id']){    	    	  
 						$retVal = '<input name="' . $varName . '" type="hidden" value="' . $rankID . '"/><b>' . $row['rank_name'] . '</b>';

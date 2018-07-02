@@ -132,6 +132,7 @@
         $programListRS = $studentDAO->getProgramList();
         
         //functions from the util class
+        if(!isset($rankID)){ $rankID = 1; }
         $rankHTML = showRankMenu($isAdmin, 'rankID', $rankID, $rankListRS);
         $programHTML = showProgramMenu('programID', $programID, $programListRS);
     }
