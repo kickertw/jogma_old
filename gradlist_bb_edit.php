@@ -144,11 +144,11 @@
             $firstSchool = true;
 ?>
 <?php
-            while($glRow = mysqli_fetch_assoc($gradListRS)){
-                if($currentSchool != $glRow['school_id']){
+            while ($glRow = mysqli_fetch_array($gradListRS, MYSQLI_ASSOC)) {
+                if ($currentSchool != $glRow['school_id']) {
                     $currentSchool = $glRow['school_id'];
-                    if(!$firstSchool){echo '            </ul>';}
-                    else{$firstSchool = false;}
+                    if (!$firstSchool) { echo '            </ul>'; }
+                    else { $firstSchool = false; }
 
 ?>
             <u><b><?= $glRow['school_name'] ?></b></u>
