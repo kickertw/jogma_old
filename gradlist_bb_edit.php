@@ -66,8 +66,8 @@
 
         if($rankListRS != false){
             $ii = 0;
-            while($row = mysqli_fetch_assoc($rankListRS)){
-                      $rankSeq[$ii] = intval($row['sequence']);
+            while ($row = mysqli_fetch_assoc($rankListRS)) {
+                $rankSeq[$ii] = intval($row['sequence']);
                 $rankListName[$ii] = $row['rank_name'];
                 $rankListID[$ii++] = $row['id'];
             }
