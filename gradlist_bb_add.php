@@ -32,10 +32,10 @@
     
     	$gradListID = $_POST['gradListID'];
     	$step = $_POST['step'];
-    	$gradMo = $_POST['gradMo'];
-    	$gradYear = $_POST['gradYear'];
-    	$gradDay = $_POST['gradDay'];
-    	$editMode = $_POST['editMode'];    	
+    	$gradMo = $_POST['gradMo'] ?? '';
+    	$gradYear = $_POST['gradYear']?? '';
+    	$gradDay = $_POST['gradDay']?? '';
+    	$editMode = $_POST['editMode'] ?? false;
 
         if ($step == 2){
             $gradDate = $gradMo . '-' . digitMasker($gradDay) . '-' . $gradYear;
