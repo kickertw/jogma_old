@@ -44,7 +44,7 @@
             <td width="35%" align="center">
 <?php
 		if ($gradListDAO->isBBGradListReadOnly($gradListID)) {
-			for($idx = 0; $idx <= count($rankListID); $idx++){
+			for($idx = 0; $idx < count($rankListID); $idx++){
 				if ($row['new_rank_id'] == $rankListID[$idx]) {
                     echo '<b>' . $rankListName[$idx] . '</b>';
                     break;
