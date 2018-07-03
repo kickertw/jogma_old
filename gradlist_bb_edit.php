@@ -12,10 +12,10 @@
     $gradListDAO = new GradListDAO($DB_server, $DB_user, $DB_pass, $DB_conn);
     $studentDAO = new StudentDAO($DB_server, $DB_user, $DB_pass, $DB_conn, $_COOKIE["uid"], $isAdmin);
 
-    $glid = $_REQUEST['glid'];
-    $gsid = $_REQUEST['gsid'];
-    $step = $_REQUEST['step'];
-    $mergeButton = $_POST['mergeButton'];
+    $glid = $_REQUEST['glid'] ?? '';
+    $gsid = $_REQUEST['gsid'] ?? '';
+    $step = $_REQUEST['step'] ?? '';
+    $rankUpdateStatus = '';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['updateListButton'])){
@@ -29,7 +29,7 @@
             $glid = $_POST['gradListID'];
             $rankUpdateStatus = "Student's new ranks have been updated.";
             $step = 2;
-        }elseif(isset($mergeButton)){
+        }elseif(isset($_POST['mergeButton'])){
             $updateResultText = '';
             $gradStudentRS = $gradListDAO->getBBGradStudents($_POST['gradListID']);
             $setReadOnly = true;
@@ -105,7 +105,7 @@
     <tr><td align="left" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b><?= $stepText ?><b></u></td></tr>
     <tr><td>&nbsp;</td></tr>
 <?php
-    if(strlen($rankUpdateStatus) > 0){
+    if(strlen($rankUpdateStatus) > 0) {
         echo '  <tr><td colspan="2" align="center" class="success">' . $rankUpdateStatus . '</td></tr><tr><td>&nbsp;</td></tr>';
     }
 
