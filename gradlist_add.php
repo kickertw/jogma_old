@@ -30,7 +30,7 @@
     $studentIDs = $_POST['studentIDs'] ?? '';
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['step'])){
+        if (isset($_POST['step']) && !isset($step)){
             $step = $_POST['step'];
         }
 
