@@ -173,8 +173,7 @@
 
         function getRankListByUser($userID, $includeBlack = 0) {
             $query = 'SELECT show_advanced_ranks FROM tbl_users WHERE id = %d';
-            $query = sprintf($query,
-                        /*mysql_real_escape_string*/($userID));
+            $query = sprintf($query, $userID);
 
             $resultSet = mysqli_query($this->link, $query) or die(mysqli_error($this->link) . " $query");
 

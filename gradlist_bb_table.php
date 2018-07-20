@@ -43,11 +43,14 @@
             <td width="30%" align="center"><?= $row['old_rank_name'] ?><input name="oldRank_<?= $row['id'] ?>" type="hidden" value="<?= $row['old_rank_id'] ?>"></td>
             <td width="35%" align="center">
 <?php
-		if($gradListDAO->isBBGradListReadOnly($gradListID)){
-			for($idx = 0; $idx <= count($rankListID); $idx++){
-				if($row['new_rank_id'] == $rankListID[$idx]){echo '<b>' . $rankListName[$idx] . '</b>';}			  
+		if ($gradListDAO->isBBGradListReadOnly($gradListID)) {
+			for($idx = 0; $idx < count($rankListID); $idx++){
+				if ($row['new_rank_id'] == $rankListID[$idx]) {
+                    echo '<b>' . $rankListName[$idx] . '</b>';
+                    break;
+                }
 			}
-		}else{
+		} else {
 ?>				            
                 <select name="newRank_<?= $row['id'] ?>">
 <?php
