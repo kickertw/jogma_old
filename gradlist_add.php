@@ -28,10 +28,10 @@
     $schoolID = $_POST['schoolID'] ?? 0;
     $gradListID = $_POST['gradListID'] ?? '';
     $studentIDs = $_POST['studentIDs'] ?? '';
-    $step = 1;
+    $step = isset($step) ? $step : 1;
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['step']) && !isset($step)){
+        if (isset($_POST['step'])){
             $step = $_POST['step'];
         }
 
